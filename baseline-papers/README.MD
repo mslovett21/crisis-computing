@@ -1,5 +1,5 @@
 # Olfi notes
-======
+
 Learning from different modalities leads to more robust inference compared to learning from a single modality.
 
 ## Goals 
@@ -45,10 +45,10 @@ Crisis MMD dataset consists of tweets and associated images collected during sev
 3. demage severity (three classes),
 
 ## Data Split
-  * 70 % training, 15% validation, 15% test
+* 70 % training, 15% validation, 15% test
 
 ## Metrics
-	1. accuracy, precision, recall and F1-score
+1. accuracy, precision, recall and F1-score
 
 ## Challenges and Future Work
 
