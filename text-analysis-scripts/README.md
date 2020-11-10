@@ -6,7 +6,34 @@ create_tweets_dataset.py
 ```python
 python create_tweets_dataset.py
 
+# choosing 'valid subset'
+df_info = df.loc[(df['image_info'] == 'informative') & (df['text_info'] == 'informative')]
+df_noninfo = df.loc[(df['image_info'] == 'not_informative') & (df['text_info'] == 'not_informative')]
+
 ```
+
+
+## Preprocess Data and Split into Train, Validation and Test.
+preprocess_split_data.py
+
+This results in a dataset same as what Gautam2019 calls "CleanCrisisMMD"
+* 8463 informative pairs (tweet + image)
+* 4299 noninformative pairs (tweet + image)
+
+The files that it produces:
+* full_tweets_df.csv  (all of the tweets: 12,762 tweets, out of this 11,407 unique tweets )
+* test_df.csv  (8933 tweets)
+* validate_df.csv (1914 tweets)
+* test_df.csv (1914 tweets)
+
+```python
+python preprocess_split_data.py
+
+```
+
+
+- [ ] Figure out how to get the same dataset as Olfi2020
+
 
 ## Preprocess the Tweets - we should follow Olfi2020
 
