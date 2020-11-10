@@ -5,18 +5,22 @@
  CrisisMMD dataset can be downloaded from : https://crisisnlp.qcri.org/data/crisismmd/CrisisMMD_v2.0.tar.gz
 """
 import os
-
+from random import shuffle
 import pandas as pd
 import shutil
 from shutil import copy
-import numpy as np
-from PIL import Image
+
 
 # CONSTANTS
 ROOT = 'CrisisMMD_v2.0/'
 INFORMATIVE = 'Informative'
 NON_INFORMATIVE = 'Non-Informative/'
-INFORMATIVE32 = 'Informative32/'
+TRAINING = 'Training_data/'
+TESTING = 'Testing_data/'
+TRAINING_INFORMATIVE = TRAINING + INFORMATIVE
+TRAINING_NON_INFORMATIVE = TRAINING + NON_INFORMATIVE
+TESTING_INFORMATIVE = TESTING + INFORMATIVE
+TESTING_NON_INFORMATIVE = TESTING + NON_INFORMATIVE
 FIRE = INFORMATIVE + '/Fire'
 FLOODS = INFORMATIVE + '/Floods'
 EARTH = INFORMATIVE + '/Earthquake'
@@ -102,11 +106,20 @@ def create_directory_structure():
         shutil.rmtree(INFORMATIVE)
     if os.path.exists(NON_INFORMATIVE) and os.path.isdir(NON_INFORMATIVE):
         shutil.rmtree(NON_INFORMATIVE)
-    if os.path.exists(INFORMATIVE32) and os.path.isdir(INFORMATIVE32):
-        shutil.rmtree(INFORMATIVE32)
+    if os.path.exists(TRAINING) and os.path.isdir(TRAINING):
+        shutil.rmtree(TRAINING)
+    if os.path.exists(TESTING) and os.path.isdir(TESTING):
+        shutil.rmtree(TESTING)
     os.mkdir(INFORMATIVE)
     os.mkdir(NON_INFORMATIVE)
-    os.mkdir(INFORMATIVE32)
+    os.mkdir(TRAINING)
+    os.mkdir(TESTING)
+
+    os.mkdir(TRAINING_INFORMATIVE)
+    os.mkdir(TRAINING_NON_INFORMATIVE)
+    os.mkdir(TESTING_INFORMATIVE)
+    os.mkdir(TESTING_NON_INFORMATIVE)
+
     for key, value in CATEGORIES_DICT.items():
         os.mkdir(value)
         create_severity_dirs(value)
@@ -131,52 +144,50 @@ def extract_images():
             non_info_sep(df_noninfo2)
 
 
-def extract_images_only_Informative():
+def create_dataset():
     """
-    Following code will extract all the images which are marked as Informative.
+    Method to split the dataset into training and testing w.r.t
+    Informative and Non-Informative category.
     :return: None
     """
+    # TODO: Code cleaning and modularity
+    info = []
+    non_info = []
     for path, subdirs, files in os.walk(INFORMATIVE):
         for name in files:
-            copy(os.path.join(path, name), INFORMATIVE32)
+            info.append(os.path.join(path, name))
+    tot = len(info)
+    print("Total Informative data:", tot)
+    shuffle(info)
+    train_split = int(tot * .90)
+    train_data = info[:train_split]
+    test_data = info[train_split:]
+    for fname in train_data:
+        copy(fname, TRAINING_INFORMATIVE)
+    for fname in test_data:
+        copy(fname, TESTING_INFORMATIVE)
 
-
-def channel_wise_mean_std():
-    """
-    Method to print channel wise Mean and STD for Informative and Non-Informative Images.
-    :return: None
-    """
-    # Informative
-    informative_files = os.listdir(INFORMATIVE32)
-    print("Total Informative Files :", len(informative_files))
-    np_image = np.array([np.array(Image.open(INFORMATIVE32 + fname)) for fname in informative_files])
-    np_image = np_image / 255.0
-    mean = np.mean(np_image, axis=(0, 1, 2))
-    std = np.std(np_image, axis=(0, 1, 2))
-    print("shape of Informative :", np_image.shape)
-    print("shape of Mean - Informative :", mean)
-    print("shape of Std - Informative :", std)
-    del np_image, mean, std
-
-    # Non - Informative
-    npn_informative_files = os.listdir(NON_INFORMATIVE)
-    print("Total Informative Files :", len(npn_informative_files))
-    np_image = np.array([np.array(Image.open(NON_INFORMATIVE + fname)) for fname in npn_informative_files])
-    np_image = np_image / 255.0
-    mean = np.mean(np_image, axis=(0, 1, 2))
-    std = np.std(np_image, axis=(0, 1, 2))
-    print("shape of Non-Informative :", np_image.shape)
-    print("shape of Mean - Non Informative :", mean)
-    print("shape of Std - Non Informative :", std)
-    del np_image, mean, std
+    for path, subdirs, files in os.walk(NON_INFORMATIVE):
+        for name in files:
+            non_info.append(os.path.join(path, name))
+    tot = len(non_info)
+    print("Total Non-Informative data:", tot)
+    shuffle(non_info)
+    train_split = int(tot * .90)
+    train_data = non_info[:train_split]
+    test_data = non_info[train_split:]
+    for fname in train_data:
+        copy(fname, TRAINING_NON_INFORMATIVE)
+    for fname in test_data:
+        copy(fname, TESTING_NON_INFORMATIVE)
 
 
 if __name__ == '__main__':
     try:
         create_directory_structure()
         extract_images()
-        extract_images_only_Informative()
-        # channel_wise_mean_std()
+        create_dataset()
+
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
     except Exception as e:
