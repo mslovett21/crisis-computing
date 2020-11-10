@@ -176,8 +176,7 @@ if __name__ == '__main__':
         create_directory_structure()
         extract_images()
         extract_images_only_Informative()
-        channel_wise_mean_std()
-
+        # channel_wise_mean_std()
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
     except Exception as e:
