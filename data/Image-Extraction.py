@@ -4,9 +4,13 @@
  as of this class.
  CrisisMMD dataset can be downloaded from : https://crisisnlp.qcri.org/data/crisismmd/CrisisMMD_v2.0.tar.gz
 """
-import os, glob
+import os
+
 import pandas as pd
+import shutil
 from shutil import copy
+import numpy as np
+from PIL import Image
 
 # CONSTANTS
 ROOT = 'CrisisMMD_v2.0/'
@@ -94,6 +98,12 @@ def create_directory_structure():
     Creating File structure which will be required to store the extracted images.
     :return: None
     """
+    if os.path.exists(INFORMATIVE) and os.path.isdir(INFORMATIVE):
+        shutil.rmtree(INFORMATIVE)
+    if os.path.exists(NON_INFORMATIVE) and os.path.isdir(NON_INFORMATIVE):
+        shutil.rmtree(NON_INFORMATIVE)
+    if os.path.exists(INFORMATIVE32) and os.path.isdir(INFORMATIVE32):
+        shutil.rmtree(INFORMATIVE32)
     os.mkdir(INFORMATIVE)
     os.mkdir(NON_INFORMATIVE)
     os.mkdir(INFORMATIVE32)
@@ -131,11 +141,43 @@ def extract_images_only_Informative():
             copy(os.path.join(path, name), INFORMATIVE32)
 
 
+def channel_wise_mean_std():
+    """
+    Method to print channel wise Mean and STD for Informative and Non-Informative Images.
+    :return: None
+    """
+    # Informative
+    informative_files = os.listdir(INFORMATIVE32)
+    print("Total Informative Files :", len(informative_files))
+    np_image = np.array([np.array(Image.open(INFORMATIVE32 + fname)) for fname in informative_files])
+    np_image = np_image / 255.0
+    mean = np.mean(np_image, axis=(0, 1, 2))
+    std = np.std(np_image, axis=(0, 1, 2))
+    print("shape of Informative :", np_image.shape)
+    print("shape of Mean - Informative :", mean)
+    print("shape of Std - Informative :", std)
+    del np_image, mean, std
+
+    # Non - Informative
+    npn_informative_files = os.listdir(NON_INFORMATIVE)
+    print("Total Informative Files :", len(npn_informative_files))
+    np_image = np.array([np.array(Image.open(NON_INFORMATIVE + fname)) for fname in npn_informative_files])
+    np_image = np_image / 255.0
+    mean = np.mean(np_image, axis=(0, 1, 2))
+    std = np.std(np_image, axis=(0, 1, 2))
+    print("shape of Non-Informative :", np_image.shape)
+    print("shape of Mean - Non Informative :", mean)
+    print("shape of Std - Non Informative :", std)
+    del np_image, mean, std
+
+
 if __name__ == '__main__':
     try:
         create_directory_structure()
         extract_images()
         extract_images_only_Informative()
+        channel_wise_mean_std()
+
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
     except Exception as e:
