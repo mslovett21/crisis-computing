@@ -4,7 +4,7 @@
  as of this class.
  CrisisMMD dataset can be downloaded from : https://crisisnlp.qcri.org/data/crisismmd/CrisisMMD_v2.0.tar.gz
 """
-import os
+import os, glob
 import pandas as pd
 from shutil import copy
 
@@ -12,6 +12,7 @@ from shutil import copy
 ROOT = 'CrisisMMD_v2.0/'
 INFORMATIVE = 'Informative'
 NON_INFORMATIVE = 'Non-Informative/'
+INFORMATIVE32 = 'Informative32/'
 FIRE = INFORMATIVE + '/Fire'
 FLOODS = INFORMATIVE + '/Floods'
 EARTH = INFORMATIVE + '/Earthquake'
@@ -95,6 +96,7 @@ def create_directory_structure():
     """
     os.mkdir(INFORMATIVE)
     os.mkdir(NON_INFORMATIVE)
+    os.mkdir(INFORMATIVE32)
     for key, value in CATEGORIES_DICT.items():
         os.mkdir(value)
         create_severity_dirs(value)
@@ -119,10 +121,21 @@ def extract_images():
             non_info_sep(df_noninfo2)
 
 
+def extract_images_only_Informative():
+    """
+    Following code will extract all the images which are marked as Informative.
+    :return: None
+    """
+    for path, subdirs, files in os.walk(INFORMATIVE):
+        for name in files:
+            copy(os.path.join(path, name), INFORMATIVE32)
+
+
 if __name__ == '__main__':
     try:
         create_directory_structure()
         extract_images()
+        extract_images_only_Informative()
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
     except Exception as e:
