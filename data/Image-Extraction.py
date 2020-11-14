@@ -5,11 +5,10 @@
  CrisisMMD dataset can be downloaded from : https://crisisnlp.qcri.org/data/crisismmd/CrisisMMD_v2.0.tar.gz
 """
 import os
-from random import shuffle
+import os.path
 import pandas as pd
 import shutil
 from shutil import copy
-
 
 # CONSTANTS
 ROOT = 'CrisisMMD_v2.0/'
@@ -137,11 +136,39 @@ def extract_images():
             # Considering only those images which have text of tweet and image in the tweet marked as Informative.
             df_informative = df.loc[(df['image_info'] == 'informative') & (df['text_info'] == 'informative')]
             # Separation of Non-Informative Images
-            df_noninfo = df.loc[df['image_info'] == 'not_informative']
-            df_noninfo2 = df.loc[(df['image_info'] == 'informative') & (df['text_info'] == 'not_informative')]
+            df_noninfo = df.loc[(df['image_info'] == 'not_informative') & (df['text_info'] == 'not_informative')]
             info_sep(category=key, df_informative=df_informative)
             non_info_sep(df_noninfo)
-            non_info_sep(df_noninfo2)
+
+
+def get_Info_Non_Info_tweets(mainDataFrame, dataframe):
+    """
+    Method which will accept a dataframe and return all the informative and Non informative tweet images
+    :param mainDataFrame: Main Dataset
+    :param dataframe: Queried Dataset
+    :return:
+    """
+    res = mainDataFrame[mainDataFrame['tweet_id'].isin(dataframe['tweet_id'])]
+    info_res = res.loc[(res['text_info'] == 'informative') & (res['image_info'] == 'informative')]
+    non_res = res.loc[(res['text_info'] == 'not_informative') & (res['image_info'] == 'not_informative')]
+    return info_res['image_path'].tolist(), non_res['image_path'].tolist()
+
+
+def copy_images(fnames, destination):
+    """
+    Method to copy the images to destination
+    :param fnames: list of file names to be copied
+    :param destination: path to destination folder
+    :return:
+    """
+    Images_not_found = 0
+    for path in fnames:
+        src = ROOT + path
+        if os.path.exists(src):
+            copy(src, destination)
+        else:
+            Images_not_found = Images_not_found + 1
+    print(Images_not_found, " Images not found for ", destination)
 
 
 def create_dataset():
@@ -151,43 +178,39 @@ def create_dataset():
     :return: None
     """
     # TODO: Code cleaning and modularity
-    info = []
-    non_info = []
-    for path, subdirs, files in os.walk(INFORMATIVE):
-        for name in files:
-            info.append(os.path.join(path, name))
-    tot = len(info)
-    print("Total Informative data:", tot)
-    shuffle(info)
-    train_split = int(tot * .90)
-    train_data = info[:train_split]
-    test_data = info[train_split:]
-    for fname in train_data:
-        copy(fname, TRAINING_INFORMATIVE)
-    for fname in test_data:
-        copy(fname, TESTING_INFORMATIVE)
+    train = 'final_tweets/train_df.csv'
+    val = 'final_tweets/validate_df.csv'
+    test = 'final_tweets/test_df.csv'
+    merged = 'CrisisMMD_v2.0/Merged.csv'
+    merged_df = pd.read_csv(merged)
 
-    for path, subdirs, files in os.walk(NON_INFORMATIVE):
-        for name in files:
-            non_info.append(os.path.join(path, name))
-    tot = len(non_info)
-    print("Total Non-Informative data:", tot)
-    shuffle(non_info)
-    train_split = int(tot * .90)
-    train_data = non_info[:train_split]
-    test_data = non_info[train_split:]
-    for fname in train_data:
-        copy(fname, TRAINING_NON_INFORMATIVE)
-    for fname in test_data:
-        copy(fname, TESTING_NON_INFORMATIVE)
+    drop_cols = ['text_info_conf', 'tweet_text']
+    keep_cols = ['tweet_id', 'image_info', 'text_info', 'image_path']
+    merged_df = merged_df[keep_cols]
+    train_df = pd.read_csv(train)
+    val_df = pd.read_csv(val)
+    test_df = pd.read_csv(test)
+    train_df = train_df.drop(drop_cols, axis=1)
+    val_df = val_df.drop(drop_cols, axis=1)
+    test_df = test_df.drop(drop_cols, axis=1)
+
+    train_info, train_non_info = get_Info_Non_Info_tweets(merged_df, train_df)
+    test_info, test_non_info = get_Info_Non_Info_tweets(merged_df, test_df)
+    val_info, val_non_info = get_Info_Non_Info_tweets(merged_df, val_df)
+
+    copy_images(train_info, TRAINING_INFORMATIVE)
+    copy_images(train_non_info, TRAINING_NON_INFORMATIVE)
+    copy_images(val_info, TRAINING_INFORMATIVE)
+    copy_images(val_non_info, TRAINING_NON_INFORMATIVE)
+    copy_images(test_info, TESTING_INFORMATIVE)
+    copy_images(test_non_info, TESTING_NON_INFORMATIVE)
 
 
 if __name__ == '__main__':
     try:
         create_directory_structure()
-        extract_images()
+        # extract_images() # Uncomment only if you want to extract images at Granular level.
         create_dataset()
-
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
     except Exception as e:
