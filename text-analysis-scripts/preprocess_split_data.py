@@ -61,8 +61,11 @@ if __name__ == '__main__':
         tweets_df['tweet_text'] = tweets_df.apply(lambda x: preprocess_tweets(x['tweet_text']), axis= 1)
         tweets_df = tweets_df.sample(frac = 1) 
         num_tweets = len(tweets_df)
-        trainset_size,valset_size, testset_size  = int(num_tweets * 0.7), int(num_tweets * 0.15),int(num_tweets * 0.15)
-        train, validate, test = np.split(tweets_df, [trainset_size,valset_size])
+        trainset_size,valset_size, testset_size  = int(num_tweets * 0.7), int(num_tweets*0.15),int(num_tweets*0.15)
+        print(trainset_size)
+        print(valset_size)
+        print(testset_size)
+        train, validate, test = np.split(tweets_df, [trainset_size,(valset_size+trainset_size)])
 
         PATH = "../data/final_tweets/"
         os.mkdir(PATH)
