@@ -4,15 +4,23 @@
  as of this class.
  CrisisMMD dataset can be downloaded from : https://crisisnlp.qcri.org/data/crisismmd/CrisisMMD_v2.0.tar.gz
 """
-import os, glob
+import os
+from random import shuffle
 import pandas as pd
+import shutil
 from shutil import copy
+
 
 # CONSTANTS
 ROOT = 'CrisisMMD_v2.0/'
 INFORMATIVE = 'Informative'
 NON_INFORMATIVE = 'Non-Informative/'
-INFORMATIVE32 = 'Informative32/'
+TRAINING = 'Training_data/'
+TESTING = 'Testing_data/'
+TRAINING_INFORMATIVE = TRAINING + INFORMATIVE
+TRAINING_NON_INFORMATIVE = TRAINING + NON_INFORMATIVE
+TESTING_INFORMATIVE = TESTING + INFORMATIVE
+TESTING_NON_INFORMATIVE = TESTING + NON_INFORMATIVE
 FIRE = INFORMATIVE + '/Fire'
 FLOODS = INFORMATIVE + '/Floods'
 EARTH = INFORMATIVE + '/Earthquake'
@@ -94,9 +102,24 @@ def create_directory_structure():
     Creating File structure which will be required to store the extracted images.
     :return: None
     """
+    if os.path.exists(INFORMATIVE) and os.path.isdir(INFORMATIVE):
+        shutil.rmtree(INFORMATIVE)
+    if os.path.exists(NON_INFORMATIVE) and os.path.isdir(NON_INFORMATIVE):
+        shutil.rmtree(NON_INFORMATIVE)
+    if os.path.exists(TRAINING) and os.path.isdir(TRAINING):
+        shutil.rmtree(TRAINING)
+    if os.path.exists(TESTING) and os.path.isdir(TESTING):
+        shutil.rmtree(TESTING)
     os.mkdir(INFORMATIVE)
     os.mkdir(NON_INFORMATIVE)
-    os.mkdir(INFORMATIVE32)
+    os.mkdir(TRAINING)
+    os.mkdir(TESTING)
+
+    os.mkdir(TRAINING_INFORMATIVE)
+    os.mkdir(TRAINING_NON_INFORMATIVE)
+    os.mkdir(TESTING_INFORMATIVE)
+    os.mkdir(TESTING_NON_INFORMATIVE)
+
     for key, value in CATEGORIES_DICT.items():
         os.mkdir(value)
         create_severity_dirs(value)
@@ -121,21 +144,50 @@ def extract_images():
             non_info_sep(df_noninfo2)
 
 
-def extract_images_only_Informative():
+def create_dataset():
     """
-    Following code will extract all the images which are marked as Informative.
+    Method to split the dataset into training and testing w.r.t
+    Informative and Non-Informative category.
     :return: None
     """
+    # TODO: Code cleaning and modularity
+    info = []
+    non_info = []
     for path, subdirs, files in os.walk(INFORMATIVE):
         for name in files:
-            copy(os.path.join(path, name), INFORMATIVE32)
+            info.append(os.path.join(path, name))
+    tot = len(info)
+    print("Total Informative data:", tot)
+    shuffle(info)
+    train_split = int(tot * .90)
+    train_data = info[:train_split]
+    test_data = info[train_split:]
+    for fname in train_data:
+        copy(fname, TRAINING_INFORMATIVE)
+    for fname in test_data:
+        copy(fname, TESTING_INFORMATIVE)
+
+    for path, subdirs, files in os.walk(NON_INFORMATIVE):
+        for name in files:
+            non_info.append(os.path.join(path, name))
+    tot = len(non_info)
+    print("Total Non-Informative data:", tot)
+    shuffle(non_info)
+    train_split = int(tot * .90)
+    train_data = non_info[:train_split]
+    test_data = non_info[train_split:]
+    for fname in train_data:
+        copy(fname, TRAINING_NON_INFORMATIVE)
+    for fname in test_data:
+        copy(fname, TESTING_NON_INFORMATIVE)
 
 
 if __name__ == '__main__':
     try:
         create_directory_structure()
         extract_images()
-        extract_images_only_Informative()
+        create_dataset()
+
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
     except Exception as e:
