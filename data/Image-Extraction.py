@@ -10,7 +10,7 @@ import pandas as pd
 import shutil
 from shutil import copy
 import numpy as np
-from scipy import ndimage
+from PIL import Image as im
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 
 # CONSTANTS
@@ -86,7 +86,7 @@ def augment_images(files):
     for file in files:
         img_path = ROOT + file
         if os.path.exists(img_path):
-            image = np.expand_dims(ndimage.imread(img_path), 0)
+            image = np.array(im.open(img_path), dtype='float32')
             save_to = TRAINING_NON_INFORMATIVE
             datagen.fit(image)
             for x, val in zip(datagen.flow(image,  # image we chose
