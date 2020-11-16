@@ -86,7 +86,7 @@ def augment_images(files):
     for file in files:
         img_path = ROOT + file
         if os.path.exists(img_path):
-            image = np.array(im.open(img_path), dtype='float32')
+            image = np.expand_dims(np.array(im.open(img_path), dtype='float32'), 0)
             save_to = TRAINING_NON_INFORMATIVE
             datagen.fit(image)
             for x, val in zip(datagen.flow(image,  # image we chose
