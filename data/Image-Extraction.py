@@ -9,6 +9,9 @@ import os.path
 import pandas as pd
 import shutil
 from shutil import copy
+import numpy as np
+from scipy import ndimage
+from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 
 # CONSTANTS
 ROOT = 'CrisisMMD_v2.0/'
@@ -70,6 +73,27 @@ def info_sep(category, df_informative):
         else:
             dest = CATEGORIES_DICT[category] + NAN
             copy(src, dest)
+
+
+def augment_images(files):
+    datagen = ImageDataGenerator(rotation_range=40,
+                                 width_shift_range=0.2,
+                                 height_shift_range=0.2,
+                                 shear_range=0.2,
+                                 zoom_range=0.2,
+                                 horizontal_flip=True,
+                                 fill_mode='nearest')
+    for file in files:
+        img_path = ROOT + file
+        if os.path.exists(img_path):
+            image = np.expand_dims(ndimage.imread(img_path), 0)
+            save_to = TRAINING_NON_INFORMATIVE
+            datagen.fit(image)
+            for x, val in zip(datagen.flow(image,  # image we chose
+                                           save_to_dir=save_to,  # this is where we figure out where to save
+                                           save_prefix='aug',
+                                           save_format='png'), range(1)):
+                pass
 
 
 def non_info_sep(df_noninfo):
@@ -198,18 +222,29 @@ def create_dataset():
     test_info, test_non_info = get_Info_Non_Info_tweets(merged_df, test_df)
     val_info, val_non_info = get_Info_Non_Info_tweets(merged_df, val_df)
 
+    print('**********Training*************')
+    print('Informative:', len(train_info) + len(val_info))
+    print('Non-Informative:', len(train_non_info) + len(val_non_info))
+    print('**********Testing*************')
+    print('Informative:', len(test_info))
+    print('Non-Informative:', len(test_non_info))
+
     copy_images(train_info, TRAINING_INFORMATIVE)
     copy_images(train_non_info, TRAINING_NON_INFORMATIVE)
     copy_images(val_info, TRAINING_INFORMATIVE)
     copy_images(val_non_info, TRAINING_NON_INFORMATIVE)
     copy_images(test_info, TESTING_INFORMATIVE)
     copy_images(test_non_info, TESTING_NON_INFORMATIVE)
+    splt = int(len(train_non_info) / 2)
+    l = train_non_info[:splt] + val_non_info
+    print("len of aug : ", len(l))
+    augment_images(l)
 
 
 if __name__ == '__main__':
     try:
         create_directory_structure()
-        # extract_images() # Uncomment only if you want to extract images at Granular level.
+        extract_images() # Uncomment only if you want to extract images at Granular level.
         create_dataset()
     except FileNotFoundError:
         print("Please check if the CrisisMMD dataset has been extracted in the same directory structure level")
