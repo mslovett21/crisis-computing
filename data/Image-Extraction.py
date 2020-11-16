@@ -235,8 +235,8 @@ def create_dataset():
     copy_images(val_non_info, TRAINING_NON_INFORMATIVE)
     copy_images(test_info, TESTING_INFORMATIVE)
     copy_images(test_non_info, TESTING_NON_INFORMATIVE)
-    splt = int(len(train_non_info) / 2)
-    l = train_non_info[:splt] + val_non_info
+
+    l = train_non_info[:1500] + val_non_info
     print("len of aug : ", len(l))
     augment_images(l)
 
