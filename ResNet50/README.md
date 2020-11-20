@@ -13,7 +13,7 @@
 
    For training:
    
-        python resnet50.py --flag train <br>
+        python resnet50.py --flag train
    For testing:
    
         python resnet50.py --flag test
