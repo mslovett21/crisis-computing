@@ -1,12 +1,14 @@
 # Important libraries
 import numpy as np
 import torch
+import argparse
+import sys
 from torch.utils.data import DataLoader, Dataset
 import torchvision
 from PIL import Image
 import os
 # set up GPU
-DEVICE = ("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = ("cuda:0" if torch.cuda.is_available() else "cpu")
 MEAN = 0.5,0.5,0.5
 STD = 0.5,0.5,0.5
 BATCH_SIZE = 64
@@ -112,7 +114,7 @@ def train_loop(model, dataset, flag):
   """
   total = 0
   correct = 0
-  epoch_loss = 0
+
   for ind, (image, label) in enumerate(dataset):
       image = image.to(DEVICE)
       label = label.type(torch.float).to(DEVICE)
@@ -127,10 +129,9 @@ def train_loop(model, dataset, flag):
       predicted = torch.round(output).squeeze(-1) 
       total += label.size(0)
       correct += (predicted==label).sum().item()
-      
+      loss.backward()
 
       if flag=="train":
-        loss.backward()
         optimizer.step()
 
   epoch_accuracy = 100*correct/total
@@ -220,28 +221,31 @@ def plot_loss(train_losses, val_losses):
     plt.show()
     
 if __name__ == "__main__":
-  
-  if DEVICE=="cuda":
-    print("GPU found!")
-  else:
-    print("No GPU found...")
-  # Initialize model
-  model = Resnet().to(DEVICE)
-  
-  #Optimizer initialization
-  optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))
 
-  #Loss function initialization
-  criterion = torch.nn.BCELoss()
+  parser = argparse.ArgumentParser(description='Arguments for training/testing')
+  parser.add_argument('--flag', tyoe=str, default="test", help=' train or test model')
+  opt = parser.parse_args()
+
+  if opt.flag == "train":
+    # Initialize model
+    model = Resnet().to(DEVICE)
+
+    #Optimizer initialization
+    optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))
+
+    #Loss function initialization
+    criterion = torch.nn.BCELoss()
 
   train_transform, test_transform = transforms_train(), transforms_test()
   train_data, val_data, test_data = get_dataloaders(train_transform, test_transform)
 
-  train_loss, val_loss = train(train_data, val_data, model, optimizer, criterion)
-  plot_loss(train_loss, val_loss)
+  if opt.flag == 'train':
+    train_loss, val_loss = train(train_data, val_data, model, optimizer, criterion)
+    plot_loss(train_loss, val_loss)
 
-  # load specific model for test
-  test_model = Resnet().to(DEVICE)
-  test_model = test_model.load_state_dict(torch.load(FINAL_CKPT))
-  output_prob, output_class = test(test_model, test_data)
+  if opt.flag == 'test':
+    # load specific model for test
+    test_model = Resnet().to(DEVICE)
+    test_model.load_state_dict(torch.load(FINAL_CKPT, map_location ='cuda:0'))
+    output_prob, output_class = test(test_model, test_data)
 
