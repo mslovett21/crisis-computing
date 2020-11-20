@@ -14,10 +14,10 @@ EPOCHS = 100
 LR = 0.00001
 N_WORKERS = 12
 IMAGE_SIZE = (600, 600)
-PATH_TRAIN = '/nas/home/slnagark/Genome/res/crisis-computing/data/Training_data'
-PATH_TEST =  '/nas/home/slnagark/Genome/res/crisis-computing/data/Testing_data'
+PATH_TRAIN = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/data/Training_data'
+PATH_TEST =  '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/data/Testing_data'
 CLASSES = {0:"Informative"  , 1:"Non-Informative"}
-FINAL_CKPT = '/nas/home/slnagark/Genome/res/checkpoints/resnet50_bceloss_final_model.pth'
+FINAL_CKPT = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_final_model.pth'
 
 # Resnet50 Architecture
 class Resnet(torch.nn.Module):
@@ -158,7 +158,7 @@ def train(train, val, model, optimizer, criterion):
     train_losses.append(epoch_train_loss)
   
     if (epoch+1)%25==0:
-      ckpt_path = '/nas/home/slnagark/Genome/res/checkpoints/resnet50_bceloss_epoch_{}.pth'.format(epoch+1)
+       ckpt_path = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_epoch_{}.pth'.format(epoch+1)
       torch.save(model.state_dict(), ckpt_path)
 
     model = model.eval()
@@ -172,7 +172,7 @@ def train(train, val, model, optimizer, criterion):
 
   print("Training done...")
   print("Model saved!")
-  final_ckpt = '/nas/home/slnagark/Genome/res/checkpoints/resnet50_bceloss_final_model.pth'
+  final_ckpt = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_final_model.pth'
   torch.save(model.state_dict(), final_ckpt)
 
   return train_losses, val_losses
