@@ -223,7 +223,7 @@ def plot_loss(train_losses, val_losses):
 if __name__ == "__main__":
 
   parser = argparse.ArgumentParser(description='Arguments for training/testing')
-  parser.add_argument('--flag', tyoe=str, default="test", help=' train or test model')
+  parser.add_argument('--flag', type=str, default="test", help=' train or test model')
   opt = parser.parse_args()
 
   if opt.flag == "train":
