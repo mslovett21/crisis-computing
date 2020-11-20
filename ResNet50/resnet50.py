@@ -97,9 +97,9 @@ def get_dataloaders(train_transform, test_transform):
     valid_sampler = torch.utils.data.sampler.SubsetRandomSampler(val_idx)
 
 
-    train_set = torch.utils.data.DataLoader(training,batch_size = batch_size,  sampler=train_sampler, num_workers=N_WORKERS)
-    val_set = torch.utils.data.DataLoader(training, batch_size = batch_size, sampler=valid_sampler, num_workers=N_WORKERS)
-    test_set = torch.utils.data.DataLoader(testing, batch_size = batch_size, shuffle=True, num_workers=N_WORKERS)
+    train_set = torch.utils.data.DataLoader(training,batch_size = BATCH_SIZE,  sampler=train_sampler, num_workers=N_WORKERS)
+    val_set = torch.utils.data.DataLoader(training, batch_size = BATCH_SIZE, sampler=valid_sampler, num_workers=N_WORKERS)
+    test_set = torch.utils.data.DataLoader(testing, batch_size = BATCH_SIZE, shuffle=True, num_workers=N_WORKERS)
 
     return train_set, val_set, test_set
 
@@ -110,10 +110,12 @@ def train_loop(model, dataset, flag):
           dataset - train or val dataset
           flag - "train" for training, "val" for validation
   """
+  total = 0
+  correct = 0
 
   for ind, (image, label) in enumerate(dataset):
-      image = image.to(device)
-      label = label.type(torch.float).to(device)
+      image = image.to(DEVICE)
+      label = label.type(torch.float).to(DEVICE)
 
       if flag == "train":
         optimizer.zero_grad()
@@ -130,8 +132,8 @@ def train_loop(model, dataset, flag):
       if flag=="train":
         optimizer.step()
 
-    epoch_accuracy = 100*correct/total
-    epoch_loss = epoch_loss/len(train_set)
+  epoch_accuracy = 100*correct/total
+  epoch_loss = epoch_loss/len(dataset)
   
   return epoch_loss, epoch_accuracy
 
@@ -148,7 +150,7 @@ def train(train, val, model, optimizer, criterion):
   val_losses = []
   print("Training start...")
 
-  for epoch in range(epochs):
+  for epoch in range(EPOCHS):
 
     model = model.train()
 
@@ -159,7 +161,7 @@ def train(train, val, model, optimizer, criterion):
   
     if (epoch+1)%25==0:
        ckpt_path = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_epoch_{}.pth'.format(epoch+1)
-      torch.save(model.state_dict(), ckpt_path)
+       torch.save(model.state_dict(), ckpt_path)
 
     model = model.eval()
     with torch.no_grad():
@@ -187,12 +189,12 @@ def test(model, test):
   total = 0
   model.eval()
   with torch.no_grad():  
-    for image, label in test_set:
+    for image, label in test:
 
         image = image.to(DEVICE)
         label = label.type(torch.float).to(DEVICE)
         output_prob = model(image)
-        predicted = torch.round(output).squeeze(-1)
+        predicted = torch.round(output_prob).squeeze(-1)
         total += label.size(0)
         correct += (predicted == label).sum().item()
     
@@ -222,7 +224,7 @@ if __name__ == "__main__":
   model = Resnet().to(DEVICE)
 
   #Optimizer initialization
-  optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, betas=(0.9, 0.999))
+  optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))
 
   #Loss function initialization
   criterion = torch.nn.BCELoss()
