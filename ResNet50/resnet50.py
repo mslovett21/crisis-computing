@@ -6,7 +6,7 @@ import torchvision
 from PIL import Image
 import os
 # set up GPU
-DEVICE = ("cuda:0" if torch.cuda.is_available() else "cpu")
+DEVICE = ("cuda" if torch.cuda.is_available() else "cpu")
 MEAN = 0.5,0.5,0.5
 STD = 0.5,0.5,0.5
 BATCH_SIZE = 64
@@ -127,9 +127,10 @@ def train_loop(model, dataset, flag):
       predicted = torch.round(output).squeeze(-1) 
       total += label.size(0)
       correct += (predicted==label).sum().item()
-      loss.backward()
+      
 
       if flag=="train":
+        loss.backward()
         optimizer.step()
 
   epoch_accuracy = 100*correct/total
@@ -219,10 +220,14 @@ def plot_loss(train_losses, val_losses):
     plt.show()
     
 if __name__ == "__main__":
-
+  
+  if DEVICE=="cuda":
+    print("GPU found!)
+  else:
+    print("No GPU found...")
   # Initialize model
   model = Resnet().to(DEVICE)
-
+  
   #Optimizer initialization
   optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))
 
