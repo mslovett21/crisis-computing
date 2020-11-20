@@ -222,7 +222,7 @@ def plot_loss(train_losses, val_losses):
 if __name__ == "__main__":
   
   if DEVICE=="cuda":
-    print("GPU found!)
+    print("GPU found!")
   else:
     print("No GPU found...")
   # Initialize model
