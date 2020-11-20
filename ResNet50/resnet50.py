@@ -112,7 +112,7 @@ def train_loop(model, dataset, flag):
   """
   total = 0
   correct = 0
-
+  epoch_loss = 0
   for ind, (image, label) in enumerate(dataset):
       image = image.to(DEVICE)
       label = label.type(torch.float).to(DEVICE)
