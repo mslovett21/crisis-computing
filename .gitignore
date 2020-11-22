@@ -1,2 +1,5 @@
 text/data/
-*.ipynb_checkpoints/
+*.ipynb_checkpoints
+text-analysis-scripts/glove.6B/
+text-analysis-scripts/glove.twitter.27B/
+text-analysis-scripts/__pycache__/
