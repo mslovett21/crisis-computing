@@ -45,9 +45,9 @@ class Resnet(torch.nn.Module):
     
 
   def forward(self, x):
-    x = self.resnet(x)
-    x = self.head(x)
-    return x
+    feat = self.resnet(x)
+    output = self.head(feat)
+    return feat, output
 
 
 
@@ -101,16 +101,18 @@ def get_dataloaders(train_transform, test_transform):
 
     train_set = torch.utils.data.DataLoader(training,batch_size = BATCH_SIZE,  sampler=train_sampler, num_workers=N_WORKERS)
     val_set = torch.utils.data.DataLoader(training, batch_size = BATCH_SIZE, sampler=valid_sampler, num_workers=N_WORKERS)
-    test_set = torch.utils.data.DataLoader(testing, batch_size = BATCH_SIZE, shuffle=True, num_workers=N_WORKERS)
+    test_set = torch.utils.data.DataLoader(testing, batch_size = BATCH_SIZE, shuffle=False, num_workers=N_WORKERS)
 
     return train_set, val_set, test_set
 
-def train_loop(model, dataset, flag):
+def train_loop(model, dataset, flag, criterion, optimizer):
   """
   returns loss and accuracy of the model for 1 epoch.
   params: model -  resnet50
           dataset - train or val dataset
           flag - "train" for training, "val" for validation
+          criterion - loss function
+          optimizer - Adam optimizer
   """
   total = 0
   correct = 0
@@ -140,6 +142,58 @@ def train_loop(model, dataset, flag):
   return epoch_loss, epoch_accuracy
 
 
+class dataset_loader(Dataset):
+  def __init__(self, data, label, transform = None):
+    self.data = data
+    self.label = label
+    self.data_len = len(data)
+    self.transform = transform
+  
+  def __len__(self):
+    # returns length of dataset
+    return self.data_len
+  
+  def __getitem__(self, idx):
+    # returns image and its label referenced by a specific index.
+
+    if torch.is_tensor(idx):
+      idx = idx.tolist()
+    image = Image.open(self.data[idx]).convert('RGB')
+    # image = np.array(image)
+    label = self.label[idx]
+
+    # Apply transformations on the image.
+    if self.transform:
+      image = self.transform(image)
+
+    return image, label
+    
+
+def run_inference(images, labels, flag):
+  """
+  returns train and test data with augmentation applied.
+  """
+  model = Resnet().to(DEVICE)
+  model.load_state_dict(torch.load(FINAL_CKPT, map_location ='cuda:0'))
+
+  if flag=='test':
+    transformation = transforms_test()
+    print("Running inference...")
+    data = dataset_loader(images, labels, transform=transformation)
+    data_test = torch.utils.data.DataLoader(data, batch_size=BATCH_SIZE, shuffle=False, num_workers=N_WORKERS)
+    prob,classes = test(model, data_test)
+    print("Inference done!")
+    return prob, classes
+  else:
+    transformation = transforms_train()
+    print("Running inference...")
+    data = dataset_loader(images, labels, transform=transformation)
+    data_train = torch.utils.data.DataLoader(data, batch_size=BATCH_SIZE, shuffle=False, num_workers=N_WORKERS)
+    prob, classes = test(model, data_train)
+    print("Inference done!")
+    return prob, classes
+
+
 def train(train, val, model, optimizer, criterion):
   """
   returns train and validation losses of the model over complete training.
@@ -158,7 +212,7 @@ def train(train, val, model, optimizer, criterion):
 
     print("Running Epoch {}".format(epoch+1))
     
-    epoch_train_loss, train_accuracy = train_loop(model,train, "train")
+    epoch_train_loss, train_accuracy = train_loop(model, train, "train", criterion, optimizer)
     train_losses.append(epoch_train_loss)
   
     if (epoch+1)%25==0:
@@ -167,7 +221,7 @@ def train(train, val, model, optimizer, criterion):
 
     model = model.eval()
     with torch.no_grad():
-      epoch_val_loss, validation_accuracy = train_loop(model, val, "val")
+      epoch_val_loss, validation_accuracy = train_loop(model, val, "val",criterion, optimizer)
       val_losses.append(epoch_val_loss)
   
     print("Training loss: {0:.4f}  Train Accuracy: {1:0.2f}".format(epoch_train_loss, train_accuracy))
@@ -189,6 +243,8 @@ def test(model, test):
   """
   correct = 0
   total = 0
+  predicted_prob = []
+  predicted_class = []
   model.eval()
   with torch.no_grad():  
     for image, label in test:
@@ -197,13 +253,15 @@ def test(model, test):
         label = label.type(torch.float).to(DEVICE)
         output_prob = model(image)
         predicted = torch.round(output_prob).squeeze(-1)
+        predicted_prob.extend(output_prob.tolist())
+        predicted_class.extend(predicted.tolist())
         total += label.size(0)
         correct += (predicted == label).sum().item()
     
     test_accuracy = 100*correct/total
     print('Test Accuracy: %f %%' %(test_accuracy))
 
-  return output_prob, predicted
+  return predicted_prob, predicted_class
 
 
 def plot_loss(train_losses, val_losses):
