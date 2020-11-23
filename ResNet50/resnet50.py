@@ -116,7 +116,7 @@ def train_loop(model, dataset, flag, criterion, optimizer):
   """
   total = 0
   correct = 0
-
+  epoch_loss = 0
   for ind, (image, label) in enumerate(dataset):
       image = image.to(DEVICE)
       label = label.type(torch.float).to(DEVICE)
@@ -124,16 +124,17 @@ def train_loop(model, dataset, flag, criterion, optimizer):
       if flag == "train":
         optimizer.zero_grad()
       
-      output = model(image)
+      _, output = model(image)
       
       loss = criterion(output, label.unsqueeze(1))
       epoch_loss += loss.item()
       predicted = torch.round(output).squeeze(-1) 
       total += label.size(0)
       correct += (predicted==label).sum().item()
-      loss.backward()
+      
 
       if flag=="train":
+        loss.backward()
         optimizer.step()
 
   epoch_accuracy = 100*correct/total
@@ -251,7 +252,7 @@ def test(model, test):
 
         image = image.to(DEVICE)
         label = label.type(torch.float).to(DEVICE)
-        output_prob = model(image)
+        _, output_prob = model(image)
         predicted = torch.round(output_prob).squeeze(-1)
         predicted_prob.extend(output_prob.tolist())
         predicted_class.extend(predicted.tolist())
