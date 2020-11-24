@@ -42,7 +42,7 @@ from libml.augment import AugmentPair, NOAUGMENT
 DATA_DIR = None
 
 _DATA_CACHE = None
-SAMPLES_PER_CLASS = [1, 2, 3, 4, 5, 10, 25, 100, 400]
+SAMPLES_PER_CLASS = [1, 2, 3, 4, 10, 25,50]
 
 flags.DEFINE_string('dataset', 'cifar10.1@4000-5000', 'Data to train on.')
 flags.DEFINE_integer('para_parse', 1, 'Parallel parsing.')
@@ -285,19 +285,21 @@ class DataSets:
 
 def create_datasets(augment_fn):
     d = {}
-    d.update([DataSets.creator('cifar10', seed, label, valid, augment_fn)
-              for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
-    d.update([DataSets.creator('cifar100', seed, label, valid, augment_fn, nclass=100)
-              for seed, label, valid in itertools.product(range(6), [400, 1000, 2500, 10000], [1, 5000])])
-    d.update([DataSets.creator('fashion_mnist', seed, label, valid, augment_fn, height=32, width=32, colors=1,
-                               parse_fn=record_parse_mnist)
-              for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
-    d.update([DataSets.creator('stl10', seed, label, valid, augment_fn, height=96, width=96)
-              for seed, label, valid in itertools.product(range(6), [1000, 5000], [1, 500])])
-    d.update([DataSets.creator('svhn', seed, label, valid, augment_fn)
-              for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
-    d.update([DataSets.creator('svhn_noextra', seed, label, valid, augment_fn)
-              for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
+    d.update([DataSets.creator('crisismmd', seed, label, valid, augment_fn, height=128, width=128, nclass=2)
+        for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
+   # d.update([DataSets.creator('cifar10', seed, label, valid, augment_fn)
+    #          for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
+   # d.update([DataSets.creator('cifar100', seed, label, valid, augment_fn, nclass=100)
+    #          for seed, label, valid in itertools.product(range(6), [400, 1000, 2500, 10000], [1, 5000])])
+  #  d.update([DataSets.creator('fashion_mnist', seed, label, valid, augment_fn, height=32, width=32, colors=1,
+     #                          parse_fn=record_parse_mnist)
+     #         for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
+  #  d.update([DataSets.creator('stl10', seed, label, valid, augment_fn, height=96, width=96)
+    #          for seed, label, valid in itertools.product(range(6), [1000, 5000], [1, 500])])
+  #  d.update([DataSets.creator('svhn', seed, label, valid, augment_fn)
+   #           for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
+   # d.update([DataSets.creator('svhn_noextra', seed, label, valid, augment_fn)
+     #         for seed, label, valid in itertools.product(range(6), [10 * x for x in SAMPLES_PER_CLASS], [1, 5000])])
     return d
 
 

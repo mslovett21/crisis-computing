@@ -49,7 +49,7 @@ flags.DEFINE_enum('augment', 'd.d',
                   [x + '.' + y for x, y in itertools.product(AUGMENT_ENUM, AUGMENT_ENUM)] +
                   [x + '.' + y + '.' + z for x, y, z in itertools.product(AUGMENT_ENUM, AUGMENT_ENUM, AUGMENT_ENUM)] + [
                       'd.d.d.d', 'd.aac.d.aac', 'd.rac.d.rac'],
-                  'Dataset augmentation method (x=identity, m=mirror, d=default, aa=auto-augment, aac=auto-augment+cutout, '
+                      'Dataset augmentation method (x=identity, m=mirror, d=default, aa=auto-augment, aac=auto-augment+cutout, '
                   'ra=rand-augment, rac=rand-augment+cutout; for rand-augment, magnitude is also randomized'
                   'rxyy=random augment with x ops and magnitude yy),'
                   'first is for labeled data, others are for unlabeled.')
@@ -340,17 +340,7 @@ class AugmentPoolCTA(AugmentPool):
 
 
 DEFAULT_AUGMENT = EasyDict(
-    cifar10=AugmentPair(tf=lambda x: dict(image=Primitives.ms(4)(x), label=x['label'], index=x.get('index', -1)),
-                        numpy=AugmentPool),
-    cifar100=AugmentPair(tf=lambda x: dict(image=Primitives.ms(4)(x), label=x['label'], index=x.get('index', -1)),
-                         numpy=AugmentPool),
-    fashion_mnist=AugmentPair(tf=lambda x: dict(image=Primitives.ms(4)(x), label=x['label'], index=x.get('index', -1)),
-                              numpy=AugmentPool),
-    stl10=AugmentPair(tf=lambda x: dict(image=Primitives.ms(12)(x), label=x['label'], index=x.get('index', -1)),
-                      numpy=AugmentPool),
-    svhn=AugmentPair(tf=lambda x: dict(image=Primitives.s(4)(x), label=x['label'], index=x.get('index', -1)),
-                     numpy=AugmentPool),
-    svhn_noextra=AugmentPair(tf=lambda x: dict(image=Primitives.s(4)(x), label=x['label'], index=x.get('index', -1)),
+    crisismmd=AugmentPair(tf=lambda x: dict(image=Primitives.ms(4)(x), label=x['label'], index=x.get('index', -1)),
                              numpy=AugmentPool),
 )
 AUTO_AUGMENT = EasyDict({
