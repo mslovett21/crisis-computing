@@ -20,6 +20,8 @@
 import collections
 import gzip
 import os
+import glob
+import re
 import tarfile
 import tempfile
 from urllib import request
@@ -32,6 +34,8 @@ from tqdm import trange
 
 from libml import data as libml_data
 from libml.utils import EasyDict
+
+from PIL import Image
 
 URLS = {
     'svhn': 'http://ufldl.stanford.edu/housenumbers/{}_32x32.mat',
@@ -103,6 +107,103 @@ def _load_stl10():
     unlabeled_set['images'] = _encode_png(unflatten(unlabeled_set['images']))
     return dict(train=train_set, test=test_set, unlabeled=unlabeled_set,
                 files=[EasyDict(filename="stl10_fold_indices.txt", data=fold_indices)])
+
+
+def _load_crisismmd():
+    def unflatten(images):
+        return np.transpose(images.reshape((images.shape[0],128,128,3)), [0, 1, 2, 3])
+
+
+    training_data = 'crisis-computing/data/Training_data'
+    testing_data = 'crisis-computing/data/Testing_data'
+    informative = '/Informative'
+    non_informative = '/Non-Informative'
+
+    train_info = training_data+informative
+    file_list1 = glob.glob(train_info+'/*.jpg')
+    file_list2 = glob.glob(train_info+'/*.png')
+    file_list = file_list1+file_list2
+    print(len(file_list))
+
+    image_list = []
+
+    for imgfile in file_list:
+        img = Image.open(imgfile)
+        img = img.resize((128,128), Image.ANTIALIAS)
+        img = img.convert("RGB")
+        thumbnail = img.copy()
+        img.close()
+        image_list.append(np.array(thumbnail).reshape((128,128,3)))
+    labels = [1]*len(image_list)
+
+    print("##########",image_list[0].shape)
+    print("############",len(labels))
+
+    train_non_info = training_data+non_informative
+    file_list1 = glob.glob(train_non_info+'/*.jpg')
+    file_list2 = glob.glob(train_non_info+'/*.png')
+    file_list = file_list1+file_list2
+    print(len(file_list))
+
+    for imgfile in file_list:
+        img = Image.open(imgfile)
+        img = img.resize((128,128), Image.ANTIALIAS)
+        img = img.convert("RGB")
+        thumbnail = img.copy()
+        img.close()
+        image_list.append(np.array(thumbnail).reshape((128,128,3)))
+    _labels = [0]*(len(image_list)-len(labels))
+
+    train_labels = labels+_labels
+    print("lengths:",len(train_labels),len(image_list))
+    train_set = {'images':np.array(image_list), 'labels':np.array(train_labels)}
+
+    test_info = testing_data+informative
+    file_list1 = glob.glob(test_info+'/*.jpg')
+    file_list2 = glob.glob(test_info+'/*.png')
+    file_list = file_list1+file_list2
+
+    image_list = []
+
+    print("hi")
+    for imgfile in file_list:
+        img = Image.open(imgfile)
+        img = img.resize((128,128), Image.ANTIALIAS)
+        img = img.convert("RGB")
+        thumbnail = img.copy()
+        img.close()
+        image_list.append(np.array(thumbnail).reshape((128,128,3)))
+    labels = [1]*len(image_list)
+
+    print("###############",image_list[0].shape)
+    print("###########",len(labels))
+
+    test_non_info = testing_data+non_informative
+    file_list1 = glob.glob(test_non_info+'/*.jpg')
+    file_list2 = glob.glob(test_non_info+'/*.png')
+    file_list = file_list1 + file_list2
+
+    for imgfile in file_list:
+        img = Image.open(imgfile)
+        img = img.resize((128,128), Image.ANTIALIAS)
+        img = img.convert("RGB")
+        thumbnail = img.copy()
+        img.close()
+        image_list.append(np.array(thumbnail).reshape((128,128,3)))
+    _labels = [0]*(len(image_list)-len(labels))
+
+    test_labels = labels+_labels
+    print(len(test_labels))
+    test_set = {'images':np.array(image_list), 'labels':np.array(test_labels)}
+
+    print("############",len(image_list), len(labels))
+
+    train_set['images'] = _encode_png(unflatten(train_set['images']))
+    test_set['images'] = _encode_png(unflatten(test_set['images']))
+
+    print("###########",len(train_set),len(test_set))
+
+    return dict(train=train_set, test=test_set)
 
 
 def _load_cifar10():
@@ -202,7 +303,7 @@ def _save_as_tfrecord(data, filename):
 def _is_installed(name, checksums):
     for subset, checksum in checksums.items():
         filename = os.path.join(libml_data.DATA_DIR, '%s-%s.tfrecord' % (name, subset))
-        if not tf.gfile.Exists(filename):
+        if not tf.io.gfile.exists(filename):
             return False
     return True
 
@@ -210,21 +311,22 @@ def _is_installed(name, checksums):
 def _save_files(files, *args, **kwargs):
     del args, kwargs
     for folder in frozenset(os.path.dirname(x) for x in files):
-        tf.gfile.MakeDirs(os.path.join(libml_data.DATA_DIR, folder))
+        tf.io.gfile.makedirs(os.path.join(libml_data.DATA_DIR, folder))
     for filename, contents in files.items():
-        with tf.gfile.Open(os.path.join(libml_data.DATA_DIR, filename), 'w') as f:
+        with tf.io.gfile.Open(os.path.join(libml_data.DATA_DIR, filename), 'w') as f:
             f.write(contents)
 
 
 def _is_installed_folder(name, folder):
-    return tf.gfile.Exists(os.path.join(libml_data.DATA_DIR, name, folder))
+    return tf.io.gfile.exists(os.path.join(libml_data.DATA_DIR, name, folder))
 
 
 CONFIGS = dict(
-    cifar10=dict(loader=_load_cifar10, checksums=dict(train=None, test=None)),
-    cifar100=dict(loader=_load_cifar100, checksums=dict(train=None, test=None)),
-    svhn=dict(loader=_load_svhn, checksums=dict(train=None, test=None, extra=None)),
-    stl10=dict(loader=_load_stl10, checksums=dict(train=None, test=None)),
+    crisismmd=dict(loader=_load_crisismmd, checksums=dict(train=None, test=None)),
+    #cifar10=dict(loader=_load_cifar10, checksums=dict(train=None, test=None)),
+    #cifar100=dict(loader=_load_cifar100, checksums=dict(train=None, test=None)),
+    #svhn=dict(loader=_load_svhn, checksums=dict(train=None, test=None, extra=None)),
+    #stl10=dict(loader=_load_stl10, checksums=dict(train=None, test=None)),
 )
 
 
@@ -233,7 +335,7 @@ def main(argv):
         subset = set(argv[1:])
     else:
         subset = set(CONFIGS.keys())
-    tf.gfile.MakeDirs(libml_data.DATA_DIR)
+    tf.io.gfile.makedirs(libml_data.DATA_DIR)
     for name, config in CONFIGS.items():
         if name not in subset:
             continue
@@ -250,12 +352,12 @@ def main(argv):
         for sub_name, data in datas.items():
             if sub_name == 'readme':
                 filename = os.path.join(libml_data.DATA_DIR, '%s-%s.txt' % (name, sub_name))
-                with tf.gfile.Open(filename, 'w') as f:
+                with tf.io.gfile.Open(filename, 'w') as f:
                     f.write(data)
             elif sub_name == 'files':
                 for file_and_data in data:
                     path = os.path.join(libml_data.DATA_DIR, file_and_data.filename)
-                    with tf.gfile.Open(path, "wb") as f:
+                    with tf.io.gfile.Open(path, "wb") as f:
                         f.write(file_and_data.data)
             else:
                 saver(data, '%s-%s' % (name, sub_name))
