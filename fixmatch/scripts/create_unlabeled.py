@@ -57,7 +57,8 @@ def main(argv):
     except tf.errors.OutOfRangeError:
         pass
     print('%d records found' % count)
-    nclass = len(class_id)
+    nclass = len(class_id )
+    print(min(class_id.keys()), max(class_id.keys()), nclass)
     assert min(class_id.keys()) == 0 and max(class_id.keys()) == (nclass - 1)
     train_stats = np.array([len(class_id[i]) for i in range(nclass)], np.float64)
     train_stats /= train_stats.max()
