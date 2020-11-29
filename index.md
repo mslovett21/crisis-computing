@@ -1,3 +1,9 @@
+**#MOTIVATION**
+
+**Multimodal** data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage.
+
+![image](https://user-images.githubusercontent.com/31839963/100529334-52932900-319b-11eb-96fa-dccfcff3c238.png)
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/mslovett21/crisis-computing/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
