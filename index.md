@@ -65,20 +65,49 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 ![pasted image 0](https://user-images.githubusercontent.com/31839963/100530769-cf79cf00-31aa-11eb-88d0-227b8481aa70.png) | ![f82882d9-5259-47c9-acd9-ca33d785a711](https://user-images.githubusercontent.com/31839963/100530624-11a21100-31a9-11eb-91e5-f5d4b4579c8c.jpg)
 ------------------------------------------------------------------------------------------------------------------------ | -----------------------------------------------------------------------------------------------------------------------------------------------
 
-**Modality** | **Accuracy** 
------------- | --------------------------
-             | <table>  <thead>  <tr>  <th>Olfi et al.</th>  <th>Ours</th> </tr>  </thead> <table>
+**Accuracy**
+**Modality** | **Olfi et al.** | **Ours**
+------------ | --------------- | --------
 **Text** | 0.808 | **0.84**
 **Image** | 0.833 | **0.89**
 **Text + Image** | 0.844 | **0.91**
 
+**epoch** | **Training Loss** | **Valid. Loss** | **Valid. Accur.**
+--------- | ----------------- | --------------- | -----------------
+**1** | 0.59 | 0.47 | 0.80
+**2** | 0.44 | 0.41 | 0.83
+**3** | 0.35 | 0.40 | 0.83
+**4** | 0.30 | 0.40 | 0.84
 
-|                |ASCII                          |HTML                         |
-|----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |<table>  <thead>  <tr>  <th></th>  <th>ASCII</th>  <th>HTML</th>  </tr>  </thead>  <tbody>  <tr>  <td>Single backticks</td>  <td><code>'Isn't this fun?'</code></td>  <td>‘Isn’t this fun?’</td>  </tr>  <tr>  <td>Quotes</td>  <td><code>"Isn't this fun?"</code></td>  <td>“Isn’t this fun?”</td>  </tr>  <tr>  <td>Dashes</td>  <td><code>-- is en-dash, --- is em-dash</code></td>  <td>– is en-dash, — is em-dash</td>  </tr>  </tbody>  </table>      |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+## ISSUE OF LABELED DATA SCARCITY
 
+**Model** | **Modality** | **Accuracy**
+--------- | ------------ | ------------
+**kNN with SupCon** | **Image** | **75.9%**
+**DeCLUTR** | **Text** | **73.4%**
+**FixMatch** | **Image** | **In progress**
+
+**ADD THE NEW PLOT FOR SUPCON IMAGE EMBEDDINGS**
+
+## IMPROVING THE PERFORMANCE USING PSEUDO-LABELS
+
+**FINAL RESULTS**
+
+
+# RESULTS
+
+## THE POWER OF MULTIMODAL DATA
+
+![be39ece1-d2f0-4e87-a95b-fde2bc2bce01](https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg)
+
+
+# FUTURE SCOPE
+
+- Improve methods/algorithms for obtaining enriched features from text and images
+- Improve label propagation techniques
+- Automatically generate a coherent summary report about an emergency event
+
+![unnamed](https://user-images.githubusercontent.com/31839963/100531135-5a5cc880-31af-11eb-9a99-fe46c38032ea.png)
 
 
 
