@@ -67,7 +67,7 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 
 **Modality** | **Accuracy** 
 ------------ | ------------
- | **Olfi et al.** | **Ours**
+ ****| **Olfi et al.** | **Ours**
 ------------ | --------------- | --------
 **Text** | 0.808 | **0.84**
 **Image** | 0.833 | **0.89**
