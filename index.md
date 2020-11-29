@@ -67,8 +67,7 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 
 **Modality** | **Accuracy** 
 ------------ | --------------------------
-             | <table>  <thead>  <tr>  <th>**Olfi et al.**</th>  <th>**Ours**</th> </tr>  </thead> <table>
------------- | --------------- | --------
+             | <table>  <thead>  <tr>  <th>Olfi et al.</th>  <th>Ours</th> </tr>  </thead> <table>
 **Text** | 0.808 | **0.84**
 **Image** | 0.833 | **0.89**
 **Text + Image** | 0.844 | **0.91**
