@@ -58,18 +58,20 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 **Our Model** (BiLSTM + ResNet50) | **92.0** | **91.8** | **91.5**
 **Gautam et al.** (best among baselines) | 79.2 | 80.2 | 80.2
 
-![f4277858-fe21-4ac6-9824-75c4d7aecb5c](https://user-images.githubusercontent.com/31839963/100530524-fe427600-31a7-11eb-83c5-6f4354659294.jpg)
+![7791bd18-f4ba-47e4-9dd8-fc5b6b602955](https://user-images.githubusercontent.com/31839963/100530749-90e41480-31aa-11eb-997b-ec18607f03bd.jpg)
 
 ## EARLY FUSION
 
-![pasted image 0](https://user-images.githubusercontent.com/31839963/100530602-da336480-31a8-11eb-8e83-d2050f40e838.png) | ![f82882d9-5259-47c9-acd9-ca33d785a711](https://user-images.githubusercontent.com/31839963/100530624-11a21100-31a9-11eb-91e5-f5d4b4579c8c.jpg)
+![pasted image 0](https://user-images.githubusercontent.com/31839963/100530769-cf79cf00-31aa-11eb-88d0-227b8481aa70.png) | ![f82882d9-5259-47c9-acd9-ca33d785a711](https://user-images.githubusercontent.com/31839963/100530624-11a21100-31a9-11eb-91e5-f5d4b4579c8c.jpg)
 ------------------------------------------------------------------------------------------------------------------------ | -----------------------------------------------------------------------------------------------------------------------------------------------
 
-**Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
------------- | --------- | ---------------- | ----------------------
-**Text** | BiLSTM | **84.0** | 82
-**Image** | ResNet50 | **88.1** | 79
-**Text + Image** | BiLSTM + ResNet50 | **92.0** | 80
+**Modality** | **Accuracy** 
+------------ | ------------
+ | **Olfi et al.** | **Ours**
+------------ | --------------- | --------
+**Text** | 0.808 | **0.84**
+**Image** | 0.833 | **0.89**
+**Text + Image** | 0.844 | **0.91**
 
 
 
