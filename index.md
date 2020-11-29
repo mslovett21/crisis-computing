@@ -31,7 +31,7 @@ Goal is to learn good representations of the classes first so that later it beco
 
 ## SEMI-SUPERVISED LEARNING
 
-### TEXT
+### Architectures for text
 
 **DeCLUTR** | **Fine-Tuned DistiBERT**
 ----------- | ------------------------
