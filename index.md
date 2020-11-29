@@ -31,11 +31,13 @@ Goal is to learn good representations of the classes first so that later it beco
 
 ## SEMI-SUPERVISED LEARNING
 
-Goal is to learn high-quality universal sentence embeddings to label the unlabeled tweets.
+### TEXT
 
 **DeCLUTR** | **Fine-Tuned DistiBERT**
 ----------- | ------------------------
 ![decltr](https://user-images.githubusercontent.com/31839963/100529619-3b096f80-319e-11eb-8624-11dfa551f3d8.jpg) | ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
+
+Goal is to learn high-quality universal sentence embeddings to label the unlabeled tweets.
 
 
 ### FixMatch
