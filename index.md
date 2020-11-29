@@ -1,8 +1,52 @@
-**#MOTIVATION**
+# MOTIVATION
 
 **Multimodal** data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage.
 
 ![1f976786-3b50-429d-bf0c-d11ab5e85c6f](https://user-images.githubusercontent.com/31839963/100529409-4360ab00-319c-11eb-804e-223d0418ffb6.jpg)
+
+
+# PROBLEM STATEMENT
+
+- Explores different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
+- Investigate applications of unsupervised and semi-supervised learning methods to mitigate the issue of labeled data scarcity on the classification task.
+
+![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
+
+
+# METHODS
+
+## CONTRASTIVE LEARNING
+
+### SupCon Architecture
+
+Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
+
+![5e85a5d5-9031-447c-b4ef-49bc7661b89a](https://user-images.githubusercontent.com/31839963/100529533-735c7e00-319d-11eb-8c41-1a2eab583afd.jpg)
+
+
+## SEMI-SUPERVISED LEARNING
+
+Goal is to learn high-quality universal sentence embeddings to label the unlabeled tweets.
+
+### DeCLUTR
+
+![decltr](https://user-images.githubusercontent.com/31839963/100529619-3b096f80-319e-11eb-8624-11dfa551f3d8.jpg)
+
+### Fine-Tuned DistiBERT
+
+![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
+
+### FixMatch
+
+Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune the existing model by using augmented images for consistency regularization and pseudo-labelling them.
+
+![5c67944c-8d8f-488d-a67f-7bbc69d4e588](https://user-images.githubusercontent.com/31839963/100529666-af441300-319e-11eb-9035-4d3e0f0b70f9.jpg)
+
+
+# EXPERIMENTS
+
+
+
 
 ## Welcome to GitHub Pages
 
