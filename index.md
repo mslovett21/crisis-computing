@@ -70,8 +70,10 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 
 ## EARLY FUSION
 
+
 ![pasted image 0](https://user-images.githubusercontent.com/31839963/100530769-cf79cf00-31aa-11eb-88d0-227b8481aa70.png) | ![f82882d9-5259-47c9-acd9-ca33d785a711](https://user-images.githubusercontent.com/31839963/100530624-11a21100-31a9-11eb-91e5-f5d4b4579c8c.jpg)
 ------------------------------------------------------------------------------------------------------------------------ | -----------------------------------------------------------------------------------------------------------------------------------------------
+Olfi et al. architecture for the multimodal classification task | Our architecture for the multimodal classification task
 
 
 **Accuracy**
@@ -113,7 +115,7 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 # RESULTS
 
 
-## THE POWER OF MULTIMODAL DATA
+**THE POWER OF MULTIMODAL DATA**
 
 
 ![be39ece1-d2f0-4e87-a95b-fde2bc2bce01](https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg)
