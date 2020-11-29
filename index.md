@@ -2,7 +2,7 @@
 
 **Multimodal** data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage.
 
-![image](https://user-images.githubusercontent.com/31839963/100529334-52932900-319b-11eb-96fa-dccfcff3c238.png)
+![1f976786-3b50-429d-bf0c-d11ab5e85c6f](https://user-images.githubusercontent.com/31839963/100529409-4360ab00-319c-11eb-804e-223d0418ffb6.jpg)
 
 ## Welcome to GitHub Pages
 
