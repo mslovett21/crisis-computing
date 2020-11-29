@@ -33,7 +33,7 @@ Goal is to learn good representations of the classes first so that later it beco
 
 Goal is to learn high-quality universal sentence embeddings to label the unlabeled tweets.
 
-### DeCLUTR | ### Fine-Tuned DistiBERT
+**DeCLUTR** | **Fine-Tuned DistiBERT**
 ----------- | ------------------------
 ![decltr](https://user-images.githubusercontent.com/31839963/100529619-3b096f80-319e-11eb-8624-11dfa551f3d8.jpg) | ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
 
@@ -100,13 +100,13 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 **FixMatch** | **Image** | **In progress**
 
 
-**ADD THE NEW PLOT FOR SUPCON IMAGE EMBEDDINGS**
+**#####ADD THE NEW PLOT FOR SUPCON IMAGE EMBEDDINGS#####**
 
 
 ## IMPROVING THE PERFORMANCE USING PSEUDO-LABELS
 
 
-**FINAL RESULTS**
+**#####FINAL RESULTS#####**
 
 
 
