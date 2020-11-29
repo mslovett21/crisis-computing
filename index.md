@@ -45,6 +45,15 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 
 # EXPERIMENTS
 
+## LATE FUSION
+
+**Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
+------------ | --------- | ---------------- | ----------------------
+**Text** | BiLSTM | **84.0** | 82
+**Image** | ResNet50 | **88.1** | 79
+**Text + Image** | BiLSTM + ResNet50 | **92.0** | 80
+
+
 
 
 
