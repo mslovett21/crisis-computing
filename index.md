@@ -1,8 +1,10 @@
 
 
 # **CRISIS COMPUTING:** Multimodal Social Media Content for Improved Emergency Response 
+<br/>
+<br/>
 
-# **Motivation**
+## **Motivation**
 
 Multimodal data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage. This data can provide local authorities and humanitarian organizations with a big picture understanding of the emergency. Moreover, it can be used to effectively and timaly plan relief responses.
 
@@ -10,7 +12,8 @@ Multimodal data shared on Social Media during critical emergencies often contain
 
 <br/>
 <br/>
-One of the biggest challenges is handling the social media information overload. To extract relevant information a computational system needs to process massive amounts of data and identify which data is **INFORMATIVE** in the context of disaster response.
+
+<span style="color:blue">**Challenge:**</span> One of the biggest challenges is handling the social media information overload. To extract relevant information a computational system needs to process massive amounts of data and identify which data is <span style="color:blue">**INFORMATIVE**</span> in the context of disaster response.
 
 
 ![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
@@ -19,7 +22,7 @@ One of the biggest challenges is handling the social media information overload.
 Subtle difference in visual characteristics of 2 images from CrisisMMD Dataset.
 <br/>
 
-# **Problem Statement**
+## **Problem Statement**
 
 - Explore different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
 - Investigate applications of unsupervised and semi-supervised learning methods to mitigate the issue of labeled data scarcity on the classification task.
