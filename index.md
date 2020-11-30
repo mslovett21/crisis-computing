@@ -1,19 +1,24 @@
-text
-{: style="text-align: center"}
 
-# CRISIS COMPUTING: Multimodal Social Media Content for Improved Emergency Response </p>
+
+# CRISIS COMPUTING: Multimodal Social Media Content for Improved Emergency Response 
 
 # Motivation
 
-**Multimodal** data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage.
+Multimodal data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage. This data can provide local authorities and humanitarian organizations with a big picture understanding of the emergency. Moreover, it can be used to effectively and timaly plan relief responses.
 
 ![1f976786-3b50-429d-bf0c-d11ab5e85c6f](https://user-images.githubusercontent.com/31839963/100529409-4360ab00-319c-11eb-804e-223d0418ffb6.jpg)
+
+
+One of the biggest challenges is handling the social media information overload. To extract relevant information a computational system needs to process massive amounts of data and identify which data is **INFORMATIVE** in the context of disaster response.
+
+
+![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
 
 
 
 # PROBLEM STATEMENT
 
-- Explores different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
+- Explore different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
 - Investigate applications of unsupervised and semi-supervised learning methods to mitigate the issue of labeled data scarcity on the classification task.
 
 ![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
