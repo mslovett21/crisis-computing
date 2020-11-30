@@ -1,4 +1,7 @@
-<p align="center"> # CRISIS COMPUTING: Multimodal Social Media Content for Improved Emergency Response </p>
+text
+{: style="text-align: center"}
+
+# CRISIS COMPUTING: Multimodal Social Media Content for Improved Emergency Response </p>
 
 # Motivation
 
