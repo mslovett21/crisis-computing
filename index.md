@@ -1,6 +1,6 @@
-# CRISIS COMPUTING
+# Crisis Computing: Multimodal Social Media Content for Improved Emergency Response
 
-# MOTIVATION
+# Motivation
 
 **Multimodal** data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage.
 
