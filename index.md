@@ -1,4 +1,4 @@
-# Crisis Computing: Multimodal Social Media Content for Improved Emergency Response
+<p align="center"> # CRISIS COMPUTING: Multimodal Social Media Content for Improved Emergency Response </p>
 
 # Motivation
 
