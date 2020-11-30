@@ -14,6 +14,8 @@ One of the biggest challenges is handling the social media information overload.
 
 ![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
 
+Subtle difference in visual characteristics of 2 images from CrisisMMD Dataset.
+
 
 
 # PROBLEM STATEMENT
@@ -21,7 +23,7 @@ One of the biggest challenges is handling the social media information overload.
 - Explore different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
 - Investigate applications of unsupervised and semi-supervised learning methods to mitigate the issue of labeled data scarcity on the classification task.
 
-![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
+
 
 
 
