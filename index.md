@@ -115,25 +115,23 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
-
+<p align="center">
 **Modality** | **Olfi et al.** | **Ours**
 ------------ | --------------- | --------
 **Text** | 0.808 | **0.84**
 **Image** | 0.833 | **0.89**
 **Text + Image** | 0.844 | **0.91**
+</p>
 
+## ** Label Data Scarcity: Improve the Performance using Pseudo-labels**
 
-
-## ** Label Data Scarcity**
-**Improve the Performance using Pseudo-labels**
-
-
+<p align="center">
 **Model** | **Modality** | **Accuracy**
 --------- | ------------ | ------------
 **kNN with SupCon** | **Image** | **75.9%**
 **DeCLUTR** | **Text** | **73.4%**
 **FixMatch** | **Image** | **In progress**
-
+</p>
 
 
 ## **The Power of Multimodal Data**
