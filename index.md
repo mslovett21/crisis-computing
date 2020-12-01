@@ -78,7 +78,7 @@ text text text text text text text text text text text text text text text text 
 
 <span style="color:blue"> ** MULTIMODAL LEARNING** </span> 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100710008-ea437380-3363-11eb-80f2-4557c16829b6.png">
+<img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
   
   
