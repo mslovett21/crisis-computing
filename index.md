@@ -29,12 +29,10 @@ In our work, we chose to explore current methodologies that can help alleviate t
 - Investigate applications of unsupervised and semi-supervised learning methods to mitigate the issue of labeled data scarcity on the classification task.
 
 
-
-
 ## **Methods**
 
 
-
+<span style="color:red"> ### **Contrastive Learning**</span>
 ### **Contrastive Learning**
 
 
