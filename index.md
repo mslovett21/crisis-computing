@@ -62,7 +62,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png" width="800" height="450">
+<img src="https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png" width="800" height="300">
 </p>
 
 
