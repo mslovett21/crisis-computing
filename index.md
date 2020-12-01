@@ -115,26 +115,23 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
-<center>
+
 **Modality** | **Olfi et al.** | **Ours**
 ------------ | --------------- | --------
 **Text** | 0.808 | **0.84**
 **Image** | 0.833 | **0.89**
 **Text + Image** | 0.844 | **0.91**
-</center>
+
 
 ## **Label Data Scarcity: Improve the Performance using Pseudo-labels**
 
 <br/>
-<div align="center">
-  <table>
+
 **Model** | **Modality** | **Accuracy**
 --------- | ------------ | ------------
 **kNN with SupCon** | **Image** | **75.9%**
 **DeCLUTR** | **Text** | **73.4%**
 **FixMatch** | **Image** | **In progress**
-  </table>  
-</div>
 
 
 ## **Visualization**
