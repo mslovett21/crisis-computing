@@ -75,6 +75,13 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
+
+<span style="color:blue"> ** MULTIMODAL LEARNING** </span> 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/7771314/100710008-ea437380-3363-11eb-80f2-4557c16829b6.png">
+  </p>
+  
+  
 ## **Experiments**
 
 
