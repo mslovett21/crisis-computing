@@ -137,8 +137,11 @@ text text text text text text text text text text text text text text text text 
 ## **Visualization**
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png">
+<img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png" width="500" height="300">
 <p/>
+
+<br/>
+
 ## **The Power of Multimodal Data**
 
 
