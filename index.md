@@ -32,9 +32,9 @@ In our work, we chose to explore current methodologies that can help alleviate t
 ## **Methods**
 
 
-<span style="color:orange"> **Representation Learning: Contrastive Learning** </span> 
+<span style="color:orange"> **REPRESENTATION LEARNING: Contrastive Learning** </span> 
 
-To improve classification accuracy on <span style="color:blue">**INFORMATIVE**</span> vs. <span style="color:blue">**NON-INFORMATIVE**</span> classification task we 
+To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative**</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
 
 ### **SupCon Architecture**
