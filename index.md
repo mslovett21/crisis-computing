@@ -92,7 +92,7 @@ text text text text text text text text text text text text text text text text 
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="400" height="200">
+<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="500" height="300">
 </p>
 <br/>
 text text text text text text text text text text text text text text text text text text text text text text text text
@@ -100,7 +100,7 @@ text text text text text text text text text text text text text text text text 
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="900" height="500">
+<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="900" height="400">
 </p>
 <br/>
 text text text text text text text text text text text text text text text text text text text text text text text text
