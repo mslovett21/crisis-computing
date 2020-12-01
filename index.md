@@ -74,7 +74,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 We train 3 different late fusion setups. We compare the results with the 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100700037-57014280-3351-11eb-9f2d-d27c7ab3556f.png" width="800" height="400">
+<img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="800" height="400">
 </p>
 <br/>
 
