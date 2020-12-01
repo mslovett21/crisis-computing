@@ -14,8 +14,7 @@ Multimodal data shared on Social Media during critical emergencies often contain
 
 <span style="color:red">**Challenge:**</span> One of the biggest challenges is handling the social media information overload. To extract relevant information a computational system needs to process massive amounts of data and identify which data is <span style="color:blue">**INFORMATIVE**</span> in the context of disaster response.
 
-
-![a9cdfe42-149f-4467-985a-3cc870b8c6c4](https://user-images.githubusercontent.com/31839963/100529467-f16c5500-319c-11eb-93da-a4dbf7c5a17e.jpg)
+![Firefox_Screenshot_2020-12-01T00-54-42 263Z](https://user-images.githubusercontent.com/7771314/100683240-c3b61600-332c-11eb-9afb-bf910d2aa8f9.png)
 
 Subtle difference in visual characteristics of 2 images from **CrisisMMD Dataset**.
 <br/>
