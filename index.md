@@ -92,24 +92,13 @@ text text text text text text text text text text text text text text text text 
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="600" height="250">
+<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="600" height="300">
 </p>
 
 
-**Accuracy**
-**Modality** | **Olfi et al.** | **Ours**
------------- | --------------- | --------
-**Text** | 0.808 | **0.84**
-**Image** | 0.833 | **0.89**
-**Text + Image** | 0.844 | **0.91**
-
-
-**epoch** | **Training Loss** | **Valid. Loss** | **Valid. Accur.**
---------- | ----------------- | --------------- | -----------------
-**1** | 0.59 | 0.47 | 0.80
-**2** | 0.44 | 0.41 | 0.83
-**3** | 0.35 | 0.40 | 0.83
-**4** | 0.30 | 0.40 | 0.84
+<p align="center">
+<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="600" height="250">
+</p>
 
 
 ## ISSUE OF LABELED DATA SCARCITY
