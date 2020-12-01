@@ -59,7 +59,7 @@ text text text text text text text text text text text text text text text text 
 
 
 
-<span style="color:blue"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
+<span style="color:blue"> **SEMI-SUPERVISED LEARNING** </span> 
 <br/>
 <br/>
 <span style="color:orange"> ***FixMatch*** </span> 
@@ -83,6 +83,15 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text  
   <br/>
+ 
+
+<span style="color:orange"> **The Power of Multimodal Data** </span> 
+
+<br/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg">
+</p>
+<br/>
 ## **Experiments**
 
 
@@ -148,14 +157,6 @@ text text text text text text text text text text text text text text text text 
 <img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png" width="500" height="300">
 <p/>
 
-<br/>
-
-## **The Power of Multimodal Data**
-
-<br/>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg">
-</p>
 <br/>
 
 ## **Future Work**
