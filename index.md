@@ -72,14 +72,13 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 <span style="color:blue"> **MULTIMODAL LEARNING** </span> <span style="color:orange"> **Late Fusion** </span> 
 <br/>
 We train 3 different late fusion setups. We compare the results with the 
-![Firefox_Screenshot_2020-12-01T05-33-25 883Z](https://user-images.githubusercontent.com/7771314/100701102-d263f380-3353-11eb-8977-80d760b0f897.png)
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="700" height="300">
 </p>
 <br/>
 <img src="https://user-images.githubusercontent.com/7771314/100701102-d263f380-3353-11eb-8977-80d760b0f897.png" width="700" height="300">
-![Firefox_Screenshot_2020-12-01T05-27-11 292Z](https://user-images.githubusercontent.com/7771314/100700692-e65b2580-3352-11eb-9784-235fa9862511.png)
+
 
 **Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
 ------------ | --------- | ---------------- | ----------------------
