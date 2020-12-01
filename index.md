@@ -32,14 +32,14 @@ In our work, we chose to explore current methodologies that can help alleviate t
 ## **Methods**
 
 
-<span style="color:orange"> **REPRESENTATION LEARNING: CONTRASTIVE LEARNING** </span> 
+<span style="color:blue"> **REPRESENTATION LEARNING: CONTRASTIVE LEARNING** </span> 
 
 To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative*</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
 
 <span style="color:red"> ***SupCon Architecture*** </span> 
 
-![Firefox_Screenshot_2020-12-01T03-52-00 372Z](https://user-images.githubusercontent.com/7771314/100695191-92960f80-3345-11eb-9acc-eea03d2508db.png)
+![Firefox_Screenshot_2020-12-01T03-52-00 372Z](https://user-images.githubusercontent.com/7771314/100695191-92960f80-3345-11eb-9acc-eea03d2508db.png =200x50)
 
 
 <span style="color:orange"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
