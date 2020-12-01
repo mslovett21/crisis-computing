@@ -37,7 +37,7 @@ In our work, we chose to explore current methodologies that can help alleviate t
 To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative*</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
 
-#### *SupCon Architecture*
+#### ** *SupCon Architecture* **
 
 Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
 
@@ -45,20 +45,12 @@ Goal is to learn good representations of the classes first so that later it beco
 
 
 <span style="color:orange"> **REPRESENTATION LEARNING: FINE-TUNED DistilBERT** </span> 
-
+ 
+ ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
 
 <span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING: FIXMATCH** </span> 
 #### * FixMatch*
 
-**Fine-Tuned DistiBERT**
----------------------------------
- ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
-
-Goal is to learn high-quality universal sentence embeddings to label the unlabeled tweets.
-
-
-<span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING: FIXMATCH** </span> 
-#### 
 
 Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune the existing model by using augmented images for consistency regularization and pseudo-labelling them.
 
@@ -66,7 +58,7 @@ Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune th
 
 
 
-# EXPERIMENTS
+## **Experiments**
 
 
 ## LATE FUSION
