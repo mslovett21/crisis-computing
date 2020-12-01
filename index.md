@@ -61,7 +61,8 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 
 
-![5c67944c-8d8f-488d-a67f-7bbc69d4e588](https://user-images.githubusercontent.com/31839963/100529666-af441300-319e-11eb-9035-4d3e0f0b70f9.jpg)
+![Firefox_Screenshot_2020-12-01T04-42-44 963Z](https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png)
+
 
 
 ## **Experiments**
