@@ -32,8 +32,9 @@ In our work, we chose to explore current methodologies that can help alleviate t
 ## **Methods**
 
 
-<h2> <span style="color:blue"> **Contrastive Learning** </span> </h2>
+<span style="color:orange"> **Representation Learning: Contrastive Learning** </span> 
 
+To improve classification accuracy on <span style="color:blue">**INFORMATIVE**</span> vs. <span style="color:blue">**NON-INFORMATIVE**</span> classification task we 
 
 
 ### **SupCon Architecture**
