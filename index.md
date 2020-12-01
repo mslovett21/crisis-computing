@@ -47,8 +47,10 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 <span style="color:red"> ***Fine-Tuned DistilBERT*** </span> 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100696498-88294500-3348-11eb-9999-0a303e73ec54.png" width="900" height="500">
+<img src="https://user-images.githubusercontent.com/7771314/100696724-17365d00-3349-11eb-9168-d1322a456501.png" width="900" height="500">
 </p>
+
+
 
 <span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
 <br/>
