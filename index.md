@@ -110,6 +110,8 @@ text text text text text text text text text text text text text text text text 
 <img src="https://user-images.githubusercontent.com/7771314/100704398-51f4c100-335a-11eb-9ede-bbd843c22317.png">
 
 ## ** Label Data Scarcity**
+**Improve the Performance using Pseudo-labels**
+
 
 **Model** | **Modality** | **Accuracy**
 --------- | ------------ | ------------
@@ -117,12 +119,6 @@ text text text text text text text text text text text text text text text text 
 **DeCLUTR** | **Text** | **73.4%**
 **FixMatch** | **Image** | **In progress**
 
-
-
-## **Improve the Performance using Pseudo-labels**
-
-
-## **Final Results**
 
 
 ## **The Power of Multimodal Data**
