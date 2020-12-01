@@ -76,7 +76,7 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
 
-<span style="color:blue"> ** MULTIMODAL LEARNING** </span> 
+<span style="color:blue"> **MULTIMODAL LEARNING** </span> 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
@@ -142,7 +142,6 @@ text text text text text text text text text text text text text text text text 
 **FixMatch** | **Image** | **In progress**
 
 
-## **Visualization**
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png" width="500" height="300">
