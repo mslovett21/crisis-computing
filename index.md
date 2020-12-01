@@ -144,17 +144,17 @@ text text text text text text text text text text text text text text text text 
 
 
 ## **Future Work**
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100709069-4ad1b100-3362-11eb-9f1b-c507188c3ff1.png" width="600" height="300">
+<img src="https://user-images.githubusercontent.com/7771314/100709069-4ad1b100-3362-11eb-9f1b-c507188c3ff1.png" width="700" height="300">
 </p>
 <br/>
 
-- Improve methods/algorithms for obtaining enriched features from text and images
-- Improve label propagation techniques
-- Automatically generate a coherent summary report about an emergency event
+Improve methods/algorithms for obtaining enriched features from text and images. Improve label propagation techniques. Automatically generate a coherent summary report about an emergency event.
 
-<p align="center">
+<p align="left">
 <img src="https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png">
 </p>
 
