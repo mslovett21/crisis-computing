@@ -21,6 +21,8 @@ Subtle difference in visual characteristics of 2 images from **CrisisMMD Dataset
 
 <span style="color:red">**Challenge 2:**</span> Another issue in the field is that of data scarsity. To develop effective applications that could assisit in crisis response, researchers need access to large-scale annotated dataset. 
 
+In our work, we decide to explore current methodologies that can help alleviate these challenges. We decided to persue the following 2-fold preoblem statements.
+
 ## **Problem Statement**
 
 - Explore different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
