@@ -73,6 +73,8 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:orange"> **Late Fusion** </span> 
 We train 3 different late fusion setups. We compare the results with the 
+![Firefox_Screenshot_2020-12-01T04-55-09 458Z](https://user-images.githubusercontent.com/7771314/100698892-6fbc2900-334e-11eb-9793-1e6a65932488.png)
+
 
 **Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
 ------------ | --------- | ---------------- | ----------------------
@@ -93,10 +95,7 @@ We train 3 different late fusion setups. We compare the results with the
 
 
 <span style="color:orange"> **Early Fusion** </span> 
-
-
-![pasted image 0](https://user-images.githubusercontent.com/31839963/100530769-cf79cf00-31aa-11eb-88d0-227b8481aa70.png) | ![f82882d9-5259-47c9-acd9-ca33d785a711](https://user-images.githubusercontent.com/31839963/100530624-11a21100-31a9-11eb-91e5-f5d4b4579c8c.jpg)
------------------------------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------------------------------------------------------------------
+![image](https://user-images.githubusercontent.com/7771314/100698980-ab56f300-334e-11eb-9703-55af4e3e36df.png)
 Olfi et al. architecture for the multimodal classification task | Our architecture for the multimodal classification task
 
 
