@@ -56,6 +56,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:blue"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
 <br/>
+<br/>
 <span style="color:orange"> ***FixMatch*** </span> 
 
 
@@ -68,17 +69,19 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 ## **Experiments**
 
 
+<span style="color:blue"> **MULTIMODAL LEARNING** </span> 
+
 <span style="color:orange"> **Late Fusion** </span> 
-
-
+We train 3 different late fusion setups. We compare the results with the 
 
 **Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
 ------------ | --------- | ---------------- | ----------------------
 **Text** | BiLSTM | **84.0** | 82
 **Image** | ResNet50 | **88.1** | 79
 **Text + Image** | BiLSTM + ResNet50 | **92.0** | 80
+<br/>
 
-
+We train 3 different late fusion setups. We compare the results with the 
 **Model** | **Mean Probability** | **Custom Decision** | **Logistic Regression**
 ------------ | --------- | ---------------- | ----------------------
 **Our Model** (BiLSTM + ResNet50) | **92.0** | **91.8** | **91.5**
