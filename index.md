@@ -32,31 +32,33 @@ In our work, we chose to explore current methodologies that can help alleviate t
 ## **Methods**
 
 
-<span style="color:orange"> **REPRESENTATION LEARNING: Contrastive Learning** </span> 
+<span style="color:orange"> **REPRESENTATION LEARNING: CONTRASTIVE LEARNING** </span> 
 
 To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative*</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
 
-### **SupCon Architecture**
+#### *SupCon Architecture*
 
 Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
 
 ![5e85a5d5-9031-447c-b4ef-49bc7661b89a](https://user-images.githubusercontent.com/31839963/100529533-735c7e00-319d-11eb-8c41-1a2eab583afd.jpg)
 
 
+<span style="color:orange"> **REPRESENTATION LEARNING: FINE-TUNED DistilBERT** </span> 
 
-## SEMI-SUPERVISED LEARNING
 
-### Architectures for text
+<span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING: FIXMATCH** </span> 
+#### * FixMatch*
 
-**DeCLUTR** | **Fine-Tuned DistiBERT**
------------ | ------------------------
-![decltr](https://user-images.githubusercontent.com/31839963/100529619-3b096f80-319e-11eb-8624-11dfa551f3d8.jpg) | ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
+**Fine-Tuned DistiBERT**
+---------------------------------
+ ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
 
 Goal is to learn high-quality universal sentence embeddings to label the unlabeled tweets.
 
 
-### FixMatch
+<span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING: FIXMATCH** </span> 
+#### 
 
 Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune the existing model by using augmented images for consistency regularization and pseudo-labelling them.
 
