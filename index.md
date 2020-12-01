@@ -139,12 +139,15 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
 
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="1000" height="350">
 </p>
 <br/>
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+<p>
+The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. This is mainly due to the graphical images which depict the statistical information of the disaster. For eg: It was been observed that all the Informative graphical image training data showed a biasness with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
+Hence our future scope of the study would be to modify our model in such a way that it would predict such kind of graphical images depending upon the graph plot information passed along with the graph, which is usually found at the top right region of the graph or with respect to the x-axis & y-axis label information of the graph.</br>
+</p>
 <br/>
 
 **Modality** | **Olfi et al.** | **Ours**
@@ -171,13 +174,11 @@ text text text text text text text text text text text text text text text text 
 <img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png" width="500" height="300">
 <p/>
 
+![ezgif com-optimize](https://user-images.githubusercontent.com/7771314/100801929-865d9100-33dd-11eb-8445-dd73ce376066.gif)
 <br/>
 
 ## **Future Work**
-<p>
-The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. This is mainly due to the graphical images which depict the statistical information of the disaster. For eg: It was been observed that all the Informative graphical image training data showed a biasness with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
-Hence our future scope of the study would be to modify our model in such a way that it would predict such kind of graphical images depending upon the graph plot information passed along with the graph, which is usually found at the top right region of the graph or with respect to the x-axis & y-axis label information of the graph.</br>
-</p>
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100709069-4ad1b100-3362-11eb-9f1b-c507188c3ff1.png" width="700" height="300">
 </p>
