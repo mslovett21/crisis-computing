@@ -31,11 +31,11 @@ In our work, we chose to explore current methodologies that can help alleviate t
 
 
 
+## **Methods**
 
-# METHODS
 
 
-## CONTRASTIVE LEARNING
+### **Contrastive Learning**
 
 
 ### SupCon Architecture
