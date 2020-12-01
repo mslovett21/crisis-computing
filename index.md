@@ -92,17 +92,22 @@ text text text text text text text text text text text text text text text text 
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="600" height="300">
+<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="400" height="200">
 </p>
-
+<br/>
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="600" height="250">
+<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="900" height="500">
 </p>
+<br/>
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 
-
-## ISSUE OF LABELED DATA SCARCITY
-
+## ** Label Data Scarcity**
 
 **Model** | **Modality** | **Accuracy**
 --------- | ------------ | ------------
@@ -111,20 +116,15 @@ text text text text text text text text text text text text text text text text 
 **FixMatch** | **Image** | **In progress**
 
 
-**#####ADD THE NEW PLOT FOR SUPCON IMAGE EMBEDDINGS#####**
+
+## **Improve the Performance using Pseudo-labels**
 
 
-## IMPROVING THE PERFORMANCE USING PSEUDO-LABELS
+## **Final Results**
 
 
-**#####FINAL RESULTS#####**
+## **The Power of Multimodal Data**
 
-
-
-# RESULTS
-
-
-**THE POWER OF MULTIMODAL DATA**
 
 
 ![be39ece1-d2f0-4e87-a95b-fde2bc2bce01](https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg)
