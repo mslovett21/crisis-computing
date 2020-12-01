@@ -45,8 +45,10 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 <span style="color:orange"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
 <span style="color:red"> ***Fine-Tuned DistilBERT*** </span> 
- 
- ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/7771314/100696498-88294500-3348-11eb-9999-0a303e73ec54.png" width="900" height="500">
+</p>
 
 <span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
 <br/>
