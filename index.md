@@ -38,7 +38,8 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:orange"> ***SupCon Overview*** </span>
 
-Our main goal was to learn good representations of classes first so that later it becomes easy to classify them. Contrastive learning in a nutshell is - 'Clusters of points belonging to the same class are pulled together in embedding space, while simultaneously pushing apart clusters of samples from different classes.'
+For our images, we use contrastive learning paradigm that seems to be well-suited for our nuance classification task.
+We aim to learn good representations of the 2 classes so that the downstream classification task becomes easy. Contrastive learning in a nutshell tries to pull clusters of points belonging to the same class close together in the embedding space, while simultaneously pushing apart the clusters of samples from different classes.
 <br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png" width="900" height="400">
