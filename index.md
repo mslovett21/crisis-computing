@@ -38,7 +38,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:orange"> ***SupCon Architecture*** </span> 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png" width="900" height="500">
+<img src="https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png" width="900" height="400">
 </p>
 
 
