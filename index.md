@@ -109,14 +109,17 @@ text text text text text text text text text text text text text text text text 
 
 <span style="color:blue"> **MULTIMODAL LEARNING: Late Fusion** </span> 
 <br/>
-We train 3 different late fusion setups. We compare the results with the 
-text text text text text text text text text text text text text text text text text text text text text text text text
+To handle the modalities of the dataset, we combine the representations of text and image by performing three late fusion techniques. We combine our best models Bi-LSTM for text and ResNet-50 for images and compare the results with the best baselines from Gautam et al.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="600" height="200">
 </p>
 <br/>
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+Our improved model was able to beat the baselines with a huge margin in all three fusion techniques viz. Mean Probability Concatenation, Custom Decision Policy and Logistic Regression Decision Policy.
+
+- We saw improved performances in all these techniques because of efficient base models i.e. ResNet-50 for image modality and Bi-LSTM for text modality with better accuracies than the baselines.
+
+- In case of Custom Decision Policy, we implemented  2 fully connected layers with ReLU activaton function in the first 128 dim layer and Sigmoid in the last layer. We trained the model for 30 epochs with Adam optimizer and BCE Loss to obtain a 0.08 training-loss.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100701939-7ef2a500-3355-11eb-8b44-8c30cd272853.png" width="900" height="500">
 </p>
