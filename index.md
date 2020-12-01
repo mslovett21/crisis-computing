@@ -37,11 +37,16 @@ In our work, we chose to explore current methodologies that can help alleviate t
 To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative*</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
 <span style="color:orange"> ***SupCon Architecture*** </span> 
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png" width="900" height="400">
 </p>
 
-
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 
 
 <span style="color:blue"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
@@ -58,14 +63,18 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 <br/>
 <br/>
 <span style="color:orange"> ***FixMatch*** </span> 
-
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png" width="800" height="300">
 </p>
 
-
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 ## **Experiments**
 
 
@@ -113,7 +122,7 @@ text text text text text text text text text text text text text text text text 
 **Image** | 0.833 | **0.89**
 **Text + Image** | 0.844 | **0.91**
 
-<img src="https://user-images.githubusercontent.com/7771314/100704398-51f4c100-335a-11eb-9ede-bbd843c22317.png">
+
 
 ## ** Label Data Scarcity**
 **Improve the Performance using Pseudo-labels**
