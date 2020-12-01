@@ -61,9 +61,9 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 
 
-
-![Firefox_Screenshot_2020-12-01T04-42-44 963Z](https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png)
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png" width="800" height="450">
+</p>
 
 
 ## **Experiments**
@@ -74,7 +74,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 We train 3 different late fusion setups. We compare the results with the 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="800" height="400">
+<img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="700" height="300">
 </p>
 <br/>
 
