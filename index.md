@@ -124,14 +124,13 @@ text text text text text text text text text text text text text text text text 
 </center>
 
 ## **Label Data Scarcity: Improve the Performance using Pseudo-labels**
-
-<center>
+<div align="center">
 **Model** | **Modality** | **Accuracy**
 --------- | ------------ | ------------
 **kNN with SupCon** | **Image** | **75.9%**
 **DeCLUTR** | **Text** | **73.4%**
 **FixMatch** | **Image** | **In progress**
-</center>
+</div>
 
 
 ## **Visualization**
