@@ -79,9 +79,10 @@ text text text text text text text text text text text text text text text text 
 <br/>
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
-
-<img src="https://user-images.githubusercontent.com/7771314/100701939-7ef2a500-3355-11eb-8b44-8c30cd272853.png" width="700" height="300">
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/7771314/100701939-7ef2a500-3355-11eb-8b44-8c30cd272853.png" width="900" height="500">
+</p>
+<br/>
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
 
