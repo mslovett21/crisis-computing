@@ -37,8 +37,6 @@ In our work, we chose to explore current methodologies that can help alleviate t
 To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative*</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
 
-#### ***SupCon Architecture***
-
 <span style="color:red"> ***SupCon Architecture*** </span> 
 
 Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
@@ -52,7 +50,8 @@ Goal is to learn good representations of the classes first so that later it beco
  
  ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
 
-<span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING: FIXMATCH** </span> 
+<span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
+<br/>
 <span style="color:red"> ***FixMatch*** </span> 
 
 
@@ -61,11 +60,11 @@ Goal is to learn good representations of the classes first so that later it beco
 ![5c67944c-8d8f-488d-a67f-7bbc69d4e588](https://user-images.githubusercontent.com/31839963/100529666-af441300-319e-11eb-9035-4d3e0f0b70f9.jpg)
 
 
-
 ## **Experiments**
 
 
-## LATE FUSION
+<span style="color:orange"> **Late Fusion** </span> 
+
 
 
 **Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
@@ -84,7 +83,8 @@ Goal is to learn good representations of the classes first so that later it beco
 ![7791bd18-f4ba-47e4-9dd8-fc5b6b602955](https://user-images.githubusercontent.com/31839963/100530749-90e41480-31aa-11eb-997b-ec18607f03bd.jpg)
 
 
-## EARLY FUSION
+
+<span style="color:orange"> **Early Fusion** </span> 
 
 
 ![pasted image 0](https://user-images.githubusercontent.com/31839963/100530769-cf79cf00-31aa-11eb-88d0-227b8481aa70.png) | ![f82882d9-5259-47c9-acd9-ca33d785a711](https://user-images.githubusercontent.com/31839963/100530624-11a21100-31a9-11eb-91e5-f5d4b4579c8c.jpg)
@@ -137,17 +137,16 @@ Olfi et al. architecture for the multimodal classification task | Our architectu
 ![be39ece1-d2f0-4e87-a95b-fde2bc2bce01](https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg)
 
 
-
-# FUTURE SCOPE
+## **Future Work**
 
 
 - Improve methods/algorithms for obtaining enriched features from text and images
 - Improve label propagation techniques
 - Automatically generate a coherent summary report about an emergency event
 
-
+<center>
 ![unnamed](https://user-images.githubusercontent.com/31839963/100531135-5a5cc880-31af-11eb-9a99-fe46c38032ea.png)
-
+</center>
 
 
 
