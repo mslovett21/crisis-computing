@@ -54,9 +54,9 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 
 
-<span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
+<span style="color:blue"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
 <br/>
-<span style="color:red"> ***FixMatch*** </span> 
+<span style="color:orange"> ***FixMatch*** </span> 
 
 
 
