@@ -38,9 +38,9 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 
 <span style="color:red"> ***SupCon Architecture*** </span> 
-<center>
+<p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100695191-92960f80-3345-11eb-9acc-eea03d2508db.png" width="900" height="500">
-</center>
+</p>
 
 <span style="color:orange"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
