@@ -78,6 +78,7 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
+<br/>
 
 <span style="color:blue"> **MULTIMODAL LEARNING** </span> 
 <p align="center">
@@ -92,8 +93,12 @@ text text text text text text text text text text text text text text text text 
 
 <br/>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg" width="800" height="300">
+<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg" width="700" height="400">
 </p>
+
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text  
+  <br/>
 <br/>
 
 
