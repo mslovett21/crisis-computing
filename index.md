@@ -87,6 +87,7 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
 <br/>
+
 <span style="color:blue"> **MULTIMODAL LEARNING: Early Fusion** </span> 
 <br/>
 
