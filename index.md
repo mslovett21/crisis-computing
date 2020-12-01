@@ -106,7 +106,8 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
-![Firefox_Screenshot_2020-12-01T06-20-29 172Z](https://user-images.githubusercontent.com/7771314/100704398-51f4c100-335a-11eb-9ede-bbd843c22317.png)
+
+<img src="https://user-images.githubusercontent.com/7771314/100704398-51f4c100-335a-11eb-9ede-bbd843c22317.png">
 
 ## ** Label Data Scarcity**
 
