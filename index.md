@@ -74,27 +74,13 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 We train 3 different late fusion setups. We compare the results with the 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="700" height="300">
+<img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="600" height="200">
 </p>
 <br/>
 <img src="https://user-images.githubusercontent.com/7771314/100701102-d263f380-3353-11eb-8977-80d760b0f897.png" width="700" height="300">
 
+<img src="https://user-images.githubusercontent.com/31839963/100530749-90e41480-31aa-11eb-997b-ec18607f03bd.jpg" width="700" height="300">
 
-**Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
------------- | --------- | ---------------- | ----------------------
-**Text** | BiLSTM | **84.0** | 82
-**Image** | ResNet50 | **88.1** | 79
-**Text + Image** | BiLSTM + ResNet50 | **92.0** | 80
-<br/>
-
-We train 3 different late fusion setups. We compare the results with the 
-**Model** | **Mean Probability** | **Custom Decision** | **Logistic Regression**
------------- | --------- | ---------------- | ----------------------
-**Our Model** (BiLSTM + ResNet50) | **92.0** | **91.8** | **91.5**
-**Gautam et al.** (best among baselines) | 79.2 | 80.2 | 80.2
-
-
-![7791bd18-f4ba-47e4-9dd8-fc5b6b602955](https://user-images.githubusercontent.com/31839963/100530749-90e41480-31aa-11eb-997b-ec18607f03bd.jpg)
 
 
 
