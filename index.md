@@ -86,8 +86,8 @@ text text text text text text text text text text text text text text text text 
   </p>
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text  
-  <br/>
- 
+ <br/>
+ <br/> 
 
 <span style="color:orange"> **The Power of Multimodal Data** </span> 
 
