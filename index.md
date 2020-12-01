@@ -150,11 +150,10 @@ text text text text text text text text text text text text text text text text 
 - Improve label propagation techniques
 - Automatically generate a coherent summary report about an emergency event
 
-<center>
-![Firefox_Screenshot_2020-12-01T07-13-53 729Z](https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png)
-</center>
 
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png">
+</p>
 
 
 
