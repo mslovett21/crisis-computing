@@ -107,6 +107,12 @@ text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text text text text text text text text
 <br/>
 
+**Modality** | **Olfi et al.** | **Ours**
+------------ | --------------- | --------
+**Text** | 0.808 | **0.84**
+**Image** | 0.833 | **0.89**
+**Text + Image** | 0.844 | **0.91**
+
 <img src="https://user-images.githubusercontent.com/7771314/100704398-51f4c100-335a-11eb-9ede-bbd843c22317.png">
 
 ## ** Label Data Scarcity**
