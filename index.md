@@ -124,8 +124,7 @@ Our improved model was able to beat the baselines with a huge margin in all thre
 <img src="https://user-images.githubusercontent.com/7771314/100701939-7ef2a500-3355-11eb-8b44-8c30cd272853.png" width="900" height="500">
 </p>
 <br/>
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+From the above confusion matrices it is quite evident that our model has a higher AUCROC value since it is able to distinguish between the two classes effectively. The model identifies a large amount of true positives and true negativies thereby making it a robust for the task. The accuracy of these techniques can be further increased with better and deeper base architectures for text and image modalities.
 <br/>
 <br/>
 
