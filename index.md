@@ -12,14 +12,15 @@ Multimodal data shared on Social Media during critical emergencies often contain
 
 <br/>
 
-<span style="color:red">**Challenge:**</span> One of the biggest challenges is handling the social media information overload. To extract relevant information a computational system needs to process massive amounts of data and identify which data is <span style="color:blue">**INFORMATIVE**</span> in the context of disaster response.
+<span style="color:red">**Challenge 1:**</span> One of the biggest challenges is handling the social media information overload. To extract relevant information a computational system needs to process massive amounts of data and identify which data is <span style="color:blue">**INFORMATIVE**</span> in the context of disaster response.
 
 ![Firefox_Screenshot_2020-12-01T00-54-42 263Z](https://user-images.githubusercontent.com/7771314/100683240-c3b61600-332c-11eb-9afb-bf910d2aa8f9.png)
 
-Subtle difference in visual characteristics of 2 images from **CrisisMMD Dataset**.
+Subtle difference in visual characteristics of 2 images from **CrisisMMD Dataset**. Both images were published on Twitter between 27th August 2017 and 3rd September 2017.
 <br/>
 
-Learnig more about
+<span style="color:red">**Challenge 2:**</span> Another issue in the field is that of data scarsity. To develop effective applications that could assisit in crisis response, researchers need access to large-scale annotated dataset. 
+
 ## **Problem Statement**
 
 - Explore different techniques of representation learning to improve performance on nuance classification of informative vs non-informative social media post in domain of crisis computing.
