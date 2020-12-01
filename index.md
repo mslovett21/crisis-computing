@@ -75,13 +75,13 @@ We train 3 different late fusion setups. We compare the results with the
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="600" height="200">
-</p>
+
 <br/>
-<img src="https://user-images.githubusercontent.com/7771314/100701102-d263f380-3353-11eb-8977-80d760b0f897.png" width="700" height="300">
+<img src="https://user-images.githubusercontent.com/7771314/100701570-c62c6600-3354-11eb-875b-c5a0d270f4aa.png" width="700" height="300">
 
 <img src="https://user-images.githubusercontent.com/31839963/100530749-90e41480-31aa-11eb-997b-ec18607f03bd.jpg" width="700" height="300">
 
-
+</p>
 
 
 <span style="color:orange"> **Early Fusion** </span> 
