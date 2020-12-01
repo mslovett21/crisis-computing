@@ -51,7 +51,10 @@ text text text text text text text text text text text text text text text text 
 
 <span style="color:blue"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
-<span style="color:orange"> ***Fine-Tuned DistilBERT*** </span> 
+<span style="color:orange"> ***Fine-Tuned DistilBERT*** </span>
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+<br/>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100704075-b06d6f80-3359-11eb-92b8-e39b361a8004.png" width="900" height="500">
@@ -89,7 +92,7 @@ text text text text text text text text text text text text text text text text 
 
 <br/>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg">
+<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg" width="800" height="300">
 </p>
 <br/>
 
