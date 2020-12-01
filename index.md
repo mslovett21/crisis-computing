@@ -69,19 +69,21 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 ## **Experiments**
 
 
-<span style="color:blue"> **MULTIMODAL LEARNING** </span> <span style="color:orange"> **Late Fusion** </span> 
+<span style="color:blue"> **MULTIMODAL LEARNING: Late Fusion** </span> 
 <br/>
 We train 3 different late fusion setups. We compare the results with the 
-
+text text text text text text text text text text text text text text text text text text text text text text text text
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="600" height="200">
-
-<br/>
-<img src="https://user-images.githubusercontent.com/7771314/100701570-c62c6600-3354-11eb-875b-c5a0d270f4aa.png" width="700" height="300">
-
-<img src="https://user-images.githubusercontent.com/31839963/100530749-90e41480-31aa-11eb-997b-ec18607f03bd.jpg" width="700" height="300">
-
 </p>
+<br/>
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
+
+<img src="https://user-images.githubusercontent.com/7771314/100701939-7ef2a500-3355-11eb-8b44-8c30cd272853.png" width="700" height="300">
+
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
 
 
 <span style="color:orange"> **Early Fusion** </span> 
