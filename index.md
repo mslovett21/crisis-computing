@@ -78,6 +78,8 @@ We train 3 different late fusion setups. We compare the results with the
 </p>
 <br/>
 
+![Firefox_Screenshot_2020-12-01T05-27-11 292Z](https://user-images.githubusercontent.com/7771314/100700692-e65b2580-3352-11eb-9784-235fa9862511.png)
+
 **Modality** | **Model** | **Our Accuracy** | **Gautam et al. 2019**
 ------------ | --------- | ---------------- | ----------------------
 **Text** | BiLSTM | **84.0** | 82
