@@ -151,7 +151,7 @@ text text text text text text text text text text text text text text text text 
 - Automatically generate a coherent summary report about an emergency event
 
 <center>
-![unnamed](https://user-images.githubusercontent.com/31839963/100531135-5a5cc880-31af-11eb-9a99-fe46c38032ea.png)
+![Firefox_Screenshot_2020-12-01T07-13-53 729Z](https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png)
 </center>
 
 
