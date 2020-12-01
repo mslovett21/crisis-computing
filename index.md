@@ -85,13 +85,14 @@ text text text text text text text text text text text text text text text text 
 <br/>
 text text text text text text text text text text text text text text text text text text text text text text text text
 text text text text text text text text text text text text text text text text text text text text text text text text
-
+<br/>
+<br/>
 <span style="color:blue"> **MULTIMODAL LEARNING: Early Fusion** </span> 
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="600" height="200">
-Olfi et al. architecture for the multimodal classification task | Our architecture for the multimodal classification task
+<img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="600" height="250">
+</p>
 
 
 **Accuracy**
