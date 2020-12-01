@@ -49,9 +49,9 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 <span style="color:orange"> ***Fine-Tuned DistilBERT*** </span> 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100697371-af811180-334a-11eb-9d1b-e5a72f5558f6.png" width="900" height="500">
+<img src="https://user-images.githubusercontent.com/7771314/100704075-b06d6f80-3359-11eb-92b8-e39b361a8004.png" width="900" height="500">
 </p>
-https://user-images.githubusercontent.com/7771314/100704075-b06d6f80-3359-11eb-92b8-e39b361a8004.png
+
 
 
 <span style="color:blue"> **UN- and SEMI-SUPERVISED LEARNING** </span> 
