@@ -38,7 +38,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:orange"> ***SupCon Overview*** </span>
 
-For our images, we use contrastive learning paradigm that seems to be well-suited for our nuance classification task.
+For our images, we use contrastive learning paradigm that is well-suited for embedding nuance concepts.
 We aim to learn good representations of the 2 classes so that the downstream classification task becomes easy. Contrastive learning in a nutshell tries to pull clusters of points belonging to the same class close together in the embedding space, while simultaneously pushing apart the clusters of samples from different classes.
 <br/>
 <p align="center">
