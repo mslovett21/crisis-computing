@@ -39,9 +39,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:red"> ***SupCon Architecture*** </span> 
 
-Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
-
-![5e85a5d5-9031-447c-b4ef-49bc7661b89a](https://user-images.githubusercontent.com/31839963/100529533-735c7e00-319d-11eb-8c41-1a2eab583afd.jpg)
+![Firefox_Screenshot_2020-12-01T03-52-00 372Z](https://user-images.githubusercontent.com/7771314/100695191-92960f80-3345-11eb-9acc-eea03d2508db.png)
 
 
 <span style="color:orange"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
