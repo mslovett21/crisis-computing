@@ -32,11 +32,11 @@ In our work, we chose to explore current methodologies that can help alleviate t
 ## **Methods**
 
 
-<h3> <span style="color:red"> Contrastive Learning </span> </h3>
-### **Contrastive Learning**
+<h2> <span style="color:blue"> **Contrastive Learning** </span> </h2>
 
 
-### SupCon Architecture
+
+### **SupCon Architecture**
 
 Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
 
