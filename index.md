@@ -36,18 +36,17 @@ In our work, we chose to explore current methodologies that can help alleviate t
 
 To improve classification accuracy on <span style="color:blue"> *informative* </span> vs. <span style="color:blue"> *non-informative*</span> classification task we decided to use supervised methods that produce meaningful, low-dimensional representations of the data.
 
-![Firefox_Screenshot_2020-12-01T04-24-14 229Z](https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png)
-<span style="color:red"> ***SupCon Architecture*** </span> 
+<span style="color:orange"> ***SupCon Architecture*** </span> 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100697371-af811180-334a-11eb-9d1b-e5a72f5558f6.png" width="900" height="500">
+<img src="https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png" width="900" height="500">
 </p>
 
 
 
 
-<span style="color:orange"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
+<span style="color:blue"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
-<span style="color:red"> ***Fine-Tuned DistilBERT*** </span> 
+<span style="color:orange"> ***Fine-Tuned DistilBERT*** </span> 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100697371-af811180-334a-11eb-9d1b-e5a72f5558f6.png" width="900" height="500">
