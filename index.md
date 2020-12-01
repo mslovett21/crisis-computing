@@ -116,7 +116,7 @@ text text text text text text text text text text text text text text text text 
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="900" height="350">
+<img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="1000" height="350">
 </p>
 <br/>
 text text text text text text text text text text text text text text text text text text text text text text text text
@@ -130,7 +130,8 @@ text text text text text text text text text text text text text text text text 
 **Text + Image** | 0.844 | **0.91**
 
 
-## **Label Data Scarcity: Improve the Performance using Pseudo-labels**
+## **Label Data Scarcity**
+## Improve the Performance using Pseudo-labels
 
 <br/>
 
@@ -151,10 +152,11 @@ text text text text text text text text text text text text text text text text 
 
 ## **The Power of Multimodal Data**
 
-
-
-![be39ece1-d2f0-4e87-a95b-fde2bc2bce01](https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg)
-
+<br/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg">
+</p>
+<br/>
 
 ## **Future Work**
 text text text text text text text text text text text text text text text text text text text text text text text text
