@@ -39,7 +39,7 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 #### ***SupCon Architecture***
 
-<span style="color:red"> *SupCon Architecture* </span> 
+<span style="color:red"> ***SupCon Architecture*** </span> 
 
 Goal is to learn good representations of the classes first so that later it becomes easy to classify them.
 
@@ -48,16 +48,15 @@ Goal is to learn good representations of the classes first so that later it beco
 
 <span style="color:orange"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
-#### ***Fine-Tuned DistilBERT***
+<span style="color:red"> ***Fine-Tuned DistilBERT*** </span> 
  
  ![FTD](https://user-images.githubusercontent.com/31839963/100529623-48265e80-319e-11eb-94ff-8349ec130169.jpg)
 
 <span style="color:orange"> **UN- and SEMI-SUPERVISED LEARNING: FIXMATCH** </span> 
+<span style="color:red"> ***FixMatch*** </span> 
 
-#### ***FixMatch***
 
 
-Goal is to provide a pseudo-label to the unlabeled images to retain/fine-tune the existing model by using augmented images for consistency regularization and pseudo-labelling them.
 
 ![5c67944c-8d8f-488d-a67f-7bbc69d4e588](https://user-images.githubusercontent.com/31839963/100529666-af441300-319e-11eb-9035-4d3e0f0b70f9.jpg)
 
