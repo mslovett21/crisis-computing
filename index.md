@@ -179,7 +179,7 @@ Hence our future scope of the study would be to modify our model in such a way t
 </p>
 
 <br/>
-![ezgif com-optimize](https://user-images.githubusercontent.com/7771314/100801929-865d9100-33dd-11eb-8445-dd73ce376066.gif)
+<img src="https://user-images.githubusercontent.com/7771314/100801929-865d9100-33dd-11eb-8445-dd73ce376066.gif">
 <br/>
 
 ## **Future Work**
