@@ -19,7 +19,7 @@ Multimodal data shared on Social Media during critical emergencies often contain
 Subtle difference in visual characteristics of 2 images from **CrisisMMD** Dataset. Both images were published on Twitter between 27th August 2017 and 3rd September 2017.
 <br/>
 
-<h1> <span style="color:red">**Challenge 2:**</span> </h1>  Another issue in the field is that of data scarsity. To develop effective applications that could assisit in crisis response, researchers need access to large-scale annotated dataset. 
+<span style="color:red">**Challenge 2:**</span> Another issue in the field is that of data scarsity. To develop effective applications that could assisit in crisis response, researchers need access to large-scale annotated dataset. 
 
 In our work, we chose to explore current methodologies that can help alleviate these challenges. We decided to persue the following 2-fold problem statement.
 
@@ -32,7 +32,7 @@ In our work, we chose to explore current methodologies that can help alleviate t
 ## **Methods**
 
 
-<span style="color:red"> ### **Contrastive Learning**</span>
+<h3> <span style="color:red"> Contrastive Learning </span> </h3>
 ### **Contrastive Learning**
 
 
