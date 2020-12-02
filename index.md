@@ -170,15 +170,10 @@ Data level fusion is a traditional way of fusing multiple data before conducting
 **FixMatch** | **Image** | **72.9%**
 
 
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png" width="500" height="300">
-<p/>
-
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100820010-2fb67e00-3402-11eb-8b37-9fbacf43984f.gif">
+<img src="https://user-images.githubusercontent.com/7771314/100820010-2fb67e00-3402-11eb-8b37-9fbacf43984f.gif"width="900" height="500">
 <p/>
 <br/>
 <p>
