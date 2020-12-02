@@ -178,7 +178,7 @@ Data level fusion is a traditional way of fusing multiple data before conducting
 <br/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100817445-0f37f500-33fd-11eb-8297-3dcf2f876d9d.gif" width="500" height="300">
+<img src="https://user-images.githubusercontent.com/7771314/100817445-0f37f500-33fd-11eb-8297-3dcf2f876d9d.gif" width="900" height="500">
 <p/>
 <br/>
 <p>
