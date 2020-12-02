@@ -133,12 +133,12 @@ From the above confusion matrices it is quite evident that our model has a highe
 
 <span style="color:blue"> **MULTIMODAL LEARNING: Early Fusion** </span> 
 <br/>
-
+We take our work step futher, 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="500" height="300">
 </p>
 <br/>
-Data level fusion is a traditional way of fusing multiple data before conducting the analysis. Early fusion is applicable on raw data or pre-processed data obtained from sensors. Data features should be extracted from the data before fusion, otherwise the process will be challenging especially when the data sources have different sampling rates between the modalities. Synchronization of data sources is also challenging when one data source is discrete and the others are continuous. Hence, converting data sources into a single feature vector is a significant challenge in early data fusion.
+
 <br/>
 
 
@@ -184,9 +184,8 @@ Hence our future scope of the study would be to modify our model in such a way t
 <img src="https://user-images.githubusercontent.com/7771314/100822858-013ba180-3408-11eb-80b5-6efc2e728b08.gif">
 </p>
 <br/>
-<br/>
 
-## **Future Work**
+## **Future Directions**
 
 <br/>
 <p align="center">
