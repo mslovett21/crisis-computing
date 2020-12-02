@@ -70,6 +70,7 @@ How SupCon works?
 <br/>
 <br/>
 <span style="color:orange"> ***FixMatch*** </span>
+
 To address the issue of data scarcity, we use semi-supervised learning in the form of consistency regularization and pseudo-labelling.
 Our goal is to provide a label to the unlabeled images in our dataset in order to obtain large-scale annotated dataset for developing effective applications.
 <br/>
