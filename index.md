@@ -186,6 +186,7 @@ Hence our future scope of the study would be to modify our model in such a way t
 <img src="https://user-images.githubusercontent.com/7771314/100822858-013ba180-3408-11eb-80b5-6efc2e728b08.gif">
 </p>
 <br/>
+<br/>
 
 ## **Future Work**
 
