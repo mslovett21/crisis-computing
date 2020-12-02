@@ -71,6 +71,7 @@ Next, we use DistiBERT tokenizer. We trained the model for 4 epochs with batch s
 <img src="https://user-images.githubusercontent.com/7771314/100704075-b06d6f80-3359-11eb-92b8-e39b361a8004.png" width="900" height="500">
 </p>
 We extrace sentence embeddings from the fine-tunes model by avaraging all the final hidden layers of all the tokens in the sentences. The latent space vectors are extracted for the training data, as well as, for test data that the model have not seen before. We use the embeddings during in our early fusion architecture.
+
 <br/>
 
 <span style="color:blue"> **SEMI-SUPERVISED LEARNING** </span> 
