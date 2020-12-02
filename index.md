@@ -94,6 +94,7 @@ FixMatch uses both the approaches together to generate highly accurate labels, b
 <p>
 FixMatch requires extensive GPU utilization and we aim to obtain higher accuracy with better GPUs available.
 </p>
+
 <br/>
 <br/>
 
@@ -177,20 +178,15 @@ We take our work step futher,
 
 
 <br/>
-
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100823962-187b8e80-340a-11eb-90cf-57d6ddba308b.gif" width="900" height="500">
-<p/>
+<img src="https://user-images.githubusercontent.com/7771314/100822858-013ba180-3408-11eb-80b5-6efc2e728b08.gif">
+</p>
 <br/>
 <p>
 The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. This is mainly due to the graphical images which depict the statistical information of the disaster. For eg: It was been observed that all the Informative graphical image training data showed a biasness with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
 Hence our future scope of the study would be to modify our model in such a way that it would predict such kind of graphical images depending upon the graph plot information passed along with the graph, which is usually found at the top right region of the graph or with respect to the x-axis & y-axis label information of the graph.
 </p>
 
-<br/>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100822858-013ba180-3408-11eb-80b5-6efc2e728b08.gif">
-</p>
 <br/>
 
 ## **Future Directions**
