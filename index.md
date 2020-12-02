@@ -47,7 +47,7 @@ We aim to learn good representations of the 2 classes so that the downstream cla
 
 There are many unsupervised methods for this type of problems but we chose to use the Supervised Contrastive Learning algorithm where we leveraged the labelled information due to the nature of our classification task. Once the model is trained, we use it to the created embeddings for a downstream tasks, as well as, for a never-seen subset of the data and check the accuracy of the model through kNN.   <br/>
 
-How SupCon works?:
+How SupCon works?
   1. Given an input batch of data, we first apply data augmentation twice to obtain two copies of the same batch. Both the copies are forward propagated through the encoder network to obtain a 2048-dimensional normalized embedding. The network learns about these transformations, what it means to come from the same image, how to spread data in embedding space, etc.
   2. During training, this representation is further propagated through a projection network which is discarded at inference time. The supervised contrastive loss is then computed on the outputs of the projection network
   3. Can use linear classifier or KNN to predict the classes of new examples. The contrastive loss maximizes the dot products of embeddings from similar classes and separates the positive samples from negatives using labels to make the distinction.
@@ -57,8 +57,7 @@ How SupCon works?:
 <span style="color:blue"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
 <span style="color:orange"> ***Fine-Tuned DistilBERT*** </span>
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+
 <br/>
 
 <p align="center">
