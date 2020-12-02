@@ -183,7 +183,7 @@ Hence our future scope of the study would be to modify our model in such a way t
 
 <br/>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100822304-e9175280-3406-11eb-8410-94924a15b103.gif">
+<img src="https://user-images.githubusercontent.com/7771314/100822858-013ba180-3408-11eb-80b5-6efc2e728b08.gif">
 </p>
 <br/>
 
