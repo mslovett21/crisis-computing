@@ -190,7 +190,7 @@ Hence our future scope of the study would be to modify our model in such a way t
 
 ## **Future Work**
 
-
+<br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100709069-4ad1b100-3362-11eb-9f1b-c507188c3ff1.png" width="700" height="300">
 </p>
