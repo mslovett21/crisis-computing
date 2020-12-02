@@ -113,7 +113,7 @@ For instance, visual information from images is very sparse, whereas a piece of 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg" width="700" height="400">
 </p>
-
+[Image source: Olfi et al. 2020]
   <br/>
 
 ## **Experiments**
