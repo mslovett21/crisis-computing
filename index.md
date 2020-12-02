@@ -197,7 +197,10 @@ Hence our future scope of the study would be to modify our model in such a way t
 </p>
 <br/>
 
-Improve methods/algorithms for obtaining enriched features from text and images. Improve label propagation techniques. Automatically generate a coherent summary report about an emergency event.
+- We look forward to include more features like disaster threat levels, type of emergencies etc to encompass a detailed report of incidents.
+- Apart from text and images we can include different modalities to further improve our existing models.
+- With better and multiple GPUs we can train the contrastive models for more epochs and achieve accuracy as high as 90%, thereby improving the feature representations.
+- Improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png">
