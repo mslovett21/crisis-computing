@@ -161,7 +161,10 @@ We chose the image embeddings to be twice the size of the text embeddings.
 <br/>
 
 <br/>
-Our result prove the importance of task-specific representations. 
+Our results prove the importance of task-specific representations.
+
+<br/>
+
 **Modality** | **Olfi et al.** | **Ours**
 ------------ | --------------- | --------
 **Text** | 0.808 | **0.84**
