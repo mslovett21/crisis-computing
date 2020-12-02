@@ -158,11 +158,10 @@ We chose the image embeddings to be twice the size of the text embeddings.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="1000" height="350">
 </p>
-<br/>
 
 <br/>
 Our results prove the importance of task-specific representations.
-
+<br/>
 <br/>
 
 **Modality** | **Olfi et al.** | **Ours**
@@ -190,7 +189,8 @@ Our results prove the importance of task-specific representations.
 </p>
 <br/>
 <p>
-The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. This is mainly due to the graphical images which depict the statistical information of the disaster. For eg: It was been observed that all the Informative graphical image training data showed a biasness with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
+The above scatter plot depicts one of the best results we have obtained during training of our Supervised Contrastive model. We can see that the model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images.
+We noticed that this issue arises as a consequence of large subset of images that depict statistical data about the disaster in the form of graphs, pie charts and so on. For eg: We observe that all the images with statistical data in the training set belong to the "informative" class. The images in the CrisisMDD dataset showed a bias with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
 Hence our future scope of the study would be to modify our model in such a way that it would predict such kind of graphical images depending upon the graph plot information passed along with the graph, which is usually found at the top right region of the graph or with respect to the x-axis & y-axis label information of the graph.
 </p>
 
