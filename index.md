@@ -173,7 +173,7 @@ We take our work step futher,
 **Model** | **Modality** | **Accuracy**
 --------- | ------------ | ------------
 **kNN with SupCon** | **Image** | **75.9%**
-**DeCLUTR** | **Text** | **73.4%**
+**DistilBERT** | **Text** | **73.4%**
 **FixMatch** | **Image** | **72.9%**
 
 
