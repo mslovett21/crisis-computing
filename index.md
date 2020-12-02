@@ -57,7 +57,8 @@ How SupCon works?
 <span style="color:blue"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
 <span style="color:orange"> ***Fine-Tuned DistilBERT*** </span>
-To create sentence embeddings that perform well in the crisis computing context, we decided to fine-tune DistilBert model on our downstream task of tweets classification. The embeddings learnt here 
+<br/>
+To create sentence embeddings that perform well in the crisis computing context, we decided to fine-tune DistilBERT model (from huggingface) on our downstream task of tweets classification. The modele is pretrained on the GloVe Twitter 27 B embeddings. Our tweets are first preprocessed; we remove stop words, URLs,hastags and punctuation. Next, we use DistiBERT tokenizer. We trained the model for 4 epochs with batch size of 16. We use Adam optimizer with weight decay of 0.01 and custom weighted loss function that compensates for the unbalanced dataset.
 
 <br/>
 
