@@ -19,9 +19,9 @@ Multimodal data shared on Social Media during critical emergencies often contain
 Subtle difference in visual characteristics of 2 images from **CrisisMMD** Dataset. Both images were published on Twitter between 27th August 2017 and 3rd September 2017.
 <br/>
 
-<span style="color:red">**Challenge 2:**</span> Another issue in the field is that of data scarsity. To develop effective applications that could assisit in crisis response, researchers need access to large-scale annotated dataset. 
+<span style="color:red">**Challenge 2:**</span> Another issue in the field is that of data scarcity. To develop effective applications that could assisit in crisis response, researchers need access to large-scale annotated dataset. 
 
-In our work, we chose to explore current methodologies that can help alleviate these challenges. We decided to persue the following 2-fold problem statement.
+In our work, we chose to explore current methodologies that can help alleviate these challenges. We decided to pursue the following 2-fold problem statement.
 
 ## **Problem Statement**
 
@@ -69,9 +69,9 @@ How SupCon works?
 <span style="color:blue"> **SEMI-SUPERVISED LEARNING** </span> 
 <br/>
 <br/>
-<span style="color:orange"> ***FixMatch*** </span> 
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+<span style="color:orange"> ***FixMatch*** </span>
+To address the issue of data scarcity, we use semi-supervised learning in the form of consistency regularization and pseudo-labelling.
+Our goal is to provide a label to the unlabeled images in our dataset in order to obtain large-scale annotated dataset for developing effective applications.
 <br/>
 
 
@@ -79,8 +79,10 @@ text text text text text text text text text text text text text text text text 
 <img src="https://user-images.githubusercontent.com/7771314/100698174-aee97a80-334c-11eb-9839-f85bd999ce0f.png" width="800" height="300">
 </p>
 
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+FixMatch uses both the approaches together to generate highly accurate labels, by following a two-step method:
+  1. Creates a weakly-augmented version of the unlabeled image using basic augmentations like flip-and-shift, and produces a pseudo-label for it using the model's predictions, which is retained only if it's confidence is above a specific threshold.
+  2. Feeds a strongly-augmented version of the same image to the model and trains it with pseudo-label as the target using cross-entropy loss.
+FixMatch requires extensive GPU utilization and we aim to obtain higher accuracy with better GPUs available.
 <br/>
 <br/>
 
@@ -89,7 +91,7 @@ text text text text text text text text text text text text text text text text 
 <img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
 text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text  
  <br/>
  <br/> 
 
@@ -135,7 +137,7 @@ From the above confusion matrices it is quite evident that our model has a highe
 <img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="500" height="300">
 </p>
 <br/>
-To handle the modalities of the dataset, we combine the representations of text and image by performing early fusion. We used embeddings to combine feature vectors of images and text to beat the baseline accuracy of olfi2020.
+Data level fusion is a traditional way of fusing multiple data before conducting the analysis. Early fusion is applicable on raw data or pre-processed data obtained from sensors. Data features should be extracted from the data before fusion, otherwise the process will be challenging especially when the data sources have different sampling rates between the modalities. Synchronization of data sources is also challenging when one data source is discrete and the others are continuous. Hence, converting data sources into a single feature vector is a significant challenge in early data fusion.
 <br/>
 
 
@@ -162,7 +164,7 @@ To handle the modalities of the dataset, we combine the representations of text 
 --------- | ------------ | ------------
 **kNN with SupCon** | **Image** | **75.9%**
 **DeCLUTR** | **Text** | **73.4%**
-**FixMatch** | **Image** | **In progress**
+**FixMatch** | **Image** | **72.9%**
 
 
 
@@ -170,7 +172,7 @@ To handle the modalities of the dataset, we combine the representations of text 
 <img src="https://user-images.githubusercontent.com/7771314/100709630-4f4a9980-3363-11eb-8b75-7b1efa83c770.png" width="500" height="300">
 <p/>
 
-</br>
+<br/>
 
 <p>
 The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. This is mainly due to the graphical images which depict the statistical information of the disaster. For eg: It was been observed that all the Informative graphical image training data showed a biasness with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
