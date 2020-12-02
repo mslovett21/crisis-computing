@@ -88,7 +88,8 @@ text text text text text text text text text text text text text text text text 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
-
+text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text text text text text text text text
  <br/>
  <br/> 
 
