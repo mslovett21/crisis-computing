@@ -93,8 +93,8 @@ FixMatch requires extensive GPU utilization and we aim to obtain higher accuracy
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text  
+Information from a single source is good but wouldn't it be great to get additional information from multiple sources? Exactly! There are multiple sources of data for a single problem at hand. These sources offer complementary information which not only helps to improve the performance of the model but also enables the model to learn better feature representations by utilizing the strengths of individual modalities.
+For instance, visual information from images is very sparse, whereas a piece of textual information for the same is more expressive. Combining these two gives us enriched information about the scene at hand. We attempt to employ this intuition by exploring early and late fusion techniques to achieve robust performance.
  <br/>
  <br/> 
 
@@ -105,8 +105,6 @@ text text text text text text text text text text text text text text text text 
 <img src="https://user-images.githubusercontent.com/31839963/100531114-36998280-31af-11eb-8fbf-be65227a7168.jpg" width="700" height="400">
 </p>
 
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text  
   <br/>
 
 ## **Experiments**
