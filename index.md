@@ -172,6 +172,10 @@ Our results prove the importance of task-specific representations.
 
 
 ## **Label Data Scarcity**
+
+To alliviate the issue of data scarsity we orginally planned to use FixMatch for images and DeCLUTR for text.
+However, the tweets are too short to fine-tune DeCLUTR. We successfully trained FixMatch but the process was very long and very computationally expensive.
+Taking from the success of our embeddings, we decide to use our trained encoders to obtain representations for the images and textual tweets in the test set and then use kNN for the classification purposes.
 ## Improve the Performance using Pseudo-Labels
 
 <br/>
