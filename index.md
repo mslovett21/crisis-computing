@@ -65,7 +65,7 @@ To create sentence embeddings that perform well in the crisis computing context,
 <img src="https://user-images.githubusercontent.com/7771314/100827860-993e8880-3412-11eb-874d-6a5792613737.png" width="900" height="200">
 </p>
 <br/>
-Next, we use the DistiBERT tokenizer. We trained the model for 4 epochs with a batch size of 16. We use Adam optimizer with weight decay of 0.01 and a custom weighted loss function that compensates for the unbalanced dataset.
+Next, we use the DistilBERT tokenizer. We trained the model for 4 epochs with a batch size of 16. We use Adam optimizer with weight decay of 0.01 and a custom weighted loss function that compensates for the unbalanced dataset.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100704075-b06d6f80-3359-11eb-92b8-e39b361a8004.png" width="900" height="500">
