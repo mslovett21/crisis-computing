@@ -142,7 +142,9 @@ From the above confusion matrices it is quite evident that our model has a highe
 
 <span style="color:blue"> **MULTIMODAL LEARNING: Early Fusion** </span> 
 <br/>
-We take our work step futher, 
+Next, we explore the early fusion paradigm where multimodal data representations are combined at the level of hidden layers in a deep learning architecture.
+Our work is guided by recent publication by Olfi et al. who provides baseline results on CrisisMMD dataset using current deep learning architectures.
+The authors proposed multimodal architecture that consists of VGG16 network and CNN RNN network. Each of the networks produces a 1x1000 representation of the given data modality. 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="500" height="300">
 </p>
