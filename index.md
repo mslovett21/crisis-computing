@@ -151,7 +151,9 @@ Our work is guided by recent publication by Olfi et al. who provides baseline re
 <br/>
 
 <br/>
-The authors proposed multimodal architecture that consists of VGG16 network and CNN RNN network. Each of the networks produces a 1x1000 representation of the given data modality. 
+The authors proposed multimodal architecture that consists of VGG16 network and CNN RNN network. Each of the networks produces a 1x1000 representation of the given data modality. Once the vectors are merged, the shared representation is fed into one hidden layer and softmax layer.
+In our early fusion architecture, we decided to combine our SupCon image embeddings of size 1x128 and fine-tunes DistilBERT sentence embeddings of size 1x 64.
+We chose image embeddings to be twice the size of text embeddings. 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100702866-4eac0600-3357-11eb-80a9-1d53e7989498.png" width="1000" height="350">
