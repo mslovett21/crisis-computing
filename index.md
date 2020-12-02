@@ -88,8 +88,7 @@ text text text text text text text text text text text text text text text text 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
-text text text text text text text text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text text text text text text text text  
+
  <br/>
  <br/> 
 
@@ -135,7 +134,7 @@ From the above confusion matrices it is quite evident that our model has a highe
 <img src="https://user-images.githubusercontent.com/7771314/100702240-37204d80-3356-11eb-88b6-d38335ff1bc7.png" width="500" height="300">
 </p>
 <br/>
-Data level fusion is a traditional way of fusing multiple data before conducting the analysis. Early fusion is applicable on raw data or pre-processed data obtained from sensors. Data features should be extracted from the data before fusion, otherwise the process will be challenging especially when the data sources have different sampling rates between the modalities. Synchronization of data sources is also challenging when one data source is discrete and the others are continuous. Hence, converting data sources into a single feature vector is a significant challenge in early data fusion.
+To handle the modalities of the dataset, we combine the representations of text and image by performing early fusion. We used embeddings to combine feature vectors of images and text to beat the baseline accuracy of olfi2020.
 <br/>
 
 
