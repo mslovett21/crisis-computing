@@ -62,7 +62,7 @@ To create sentence embeddings that perform well in the crisis computing context,
 
 <br/>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/7771314/100827860-993e8880-3412-11eb-874d-6a5792613737.png" width="900" height="500">
+<img src="https://user-images.githubusercontent.com/7771314/100827860-993e8880-3412-11eb-874d-6a5792613737.png" width="900" height="200">
 </p>
 
 
