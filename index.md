@@ -196,17 +196,18 @@ The above scatter plot depicts one of the best results we have obtained during t
 
 ## **Future Directions**
 
+With the increasingly noticeable impact of global warming on our climate, the disaster impact analysis and estimation became a critical issue. We hope to contribute to the field and help mitigate the lack of situational awareness by helping to develop a computational system for automated disaster summaries creation.
 <br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100709069-4ad1b100-3362-11eb-9f1b-c507188c3ff1.png" width="700" height="300">
 </p>
 <br/>
-
+Specifically: 
 - We look forward to include more features like disaster threat levels, type of emergencies etc to encompass a detailed report of incidents.
 - Apart from text and images we can include different modalities to further improve our existing models.
 - With better and multiple GPUs we can train the contrastive models for more epochs and achieve accuracy as high as 90%, thereby improving the feature representations.
-- We also intend to improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster. 
-- In recent era, disaster impact analysis and estimation is a critical issue and we look forward to mitigate the lack of awareness by summarizing the informative tweets and images in a report template as follows. This becomes an import field of application for disaster prone areas to secure immediate attention.
+- We also intend to improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster and develop  a metric to evaluate a quality of such report.
+
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png">
