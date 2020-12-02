@@ -203,6 +203,8 @@ With the increasingly noticeable impact of global warming on our climate, the di
 </p>
 <br/>
 Specifically: 
+<br/>
+
 - We look forward to include more features like disaster threat levels, type of emergencies etc to encompass a detailed report of incidents.
 - Apart from text and images we can include different modalities to further improve our existing models.
 - With better and multiple GPUs we can train the contrastive models for more epochs and achieve accuracy as high as 90%, thereby improving the feature representations.
