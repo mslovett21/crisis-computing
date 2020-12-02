@@ -207,7 +207,8 @@ Hence our future scope of the study would be to modify our model in such a way t
 - We look forward to include more features like disaster threat levels, type of emergencies etc to encompass a detailed report of incidents.
 - Apart from text and images we can include different modalities to further improve our existing models.
 - With better and multiple GPUs we can train the contrastive models for more epochs and achieve accuracy as high as 90%, thereby improving the feature representations.
-- We also intend to improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster.
+- We also intend to improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster. 
+- In recent era, disaster impact analysis and estimation is a critical issue and we look forward to mitigate the lack of awareness by summarizing the informative tweets and images in a report template as follows. This becomes an import field of application for disaster prone areas to secure immediate attention.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png">
