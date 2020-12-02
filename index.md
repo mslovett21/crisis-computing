@@ -83,8 +83,9 @@ Our goal is to provide a label to the unlabeled images in our dataset in order t
 FixMatch uses both the approaches together to generate highly accurate labels, by following a two-step method:
   1. Creates a weakly-augmented version of the unlabeled image using basic augmentations like flip-and-shift, and produces a pseudo-label for it using the model's predictions, which is retained only if it's confidence is above a specific threshold.
   2. Feeds a strongly-augmented version of the same image to the model and trains it with pseudo-label as the target using cross-entropy loss.
-<br/>
+<p>
 FixMatch requires extensive GPU utilization and we aim to obtain higher accuracy with better GPUs available.
+</p>
 <br/>
 <br/>
 
