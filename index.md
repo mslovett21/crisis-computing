@@ -5,7 +5,7 @@
 
 ## **Motivation**
 
-Multimodal data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage. This data can provide local authorities and humanitarian organizations with a big picture understanding of the emergency. Moreover, it can be used to effectively and timaly plan relief responses.
+Multimodal data shared on Social Media during critical emergencies often contains useful information about a scale of the events, victims and infrastructure damage. This data can provide local authorities and humanitarian organizations with a big picture understanding of the emergency. Moreover, it can be used to effectively and timely plan relief responses.
 <br/>
 
 ![1f976786-3b50-429d-bf0c-d11ab5e85c6f](https://user-images.githubusercontent.com/31839963/100529409-4360ab00-319c-11eb-804e-223d0418ffb6.jpg)
@@ -83,6 +83,7 @@ Our goal is to provide a label to the unlabeled images in our dataset in order t
 FixMatch uses both the approaches together to generate highly accurate labels, by following a two-step method:
   1. Creates a weakly-augmented version of the unlabeled image using basic augmentations like flip-and-shift, and produces a pseudo-label for it using the model's predictions, which is retained only if it's confidence is above a specific threshold.
   2. Feeds a strongly-augmented version of the same image to the model and trains it with pseudo-label as the target using cross-entropy loss.
+
 FixMatch requires extensive GPU utilization and we aim to obtain higher accuracy with better GPUs available.
 <br/>
 <br/>
@@ -176,7 +177,8 @@ Data level fusion is a traditional way of fusing multiple data before conducting
 <br/>
 
 <p>
-The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. It is mainly due to the graphical images which depict the statistical information of the disaster. For instance,  most of the Informative graphical images of training data were that of a line graph. Hence, our model had a lot of false positives when tested on unseen data. (eg. random images downloaded from google.com) As a result, our future scope of the study would be, to modify our model to predict these graphical images based on the graph plot information passed along with the graph that is at the top right corner or the x-axis & y-axis label information.
+The above scatter plot depicts one of the best results we have got so far after training our Supervised Contrastive model. We can see that our Supervised Contrastive learning model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. This is mainly due to the graphical images which depict the statistical information of the disaster. For eg: It was been observed that all the Informative graphical image training data showed a biasness with respect to the line graph meaning most of the graphical informative images were that of a line graph and hence our model had a lot of false positives when tested on unseen data (eg. random images downloaded from google.com) which involved random line plot graphs. 
+Hence our future scope of the study would be to modify our model in such a way that it would predict such kind of graphical images depending upon the graph plot information passed along with the graph, which is usually found at the top right region of the graph or with respect to the x-axis & y-axis label information of the graph.
 </p>
 
 <br/>
@@ -186,6 +188,7 @@ The above scatter plot depicts one of the best results we have got so far after 
 <br/>
 
 ## **Future Work**
+
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100709069-4ad1b100-3362-11eb-9f1b-c507188c3ff1.png" width="700" height="300">
