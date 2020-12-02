@@ -57,6 +57,7 @@ How SupCon works?
 <span style="color:blue"> **REPRESENTATION LEARNING: SENTENCE EMBEDDINGS** </span> 
 
 <span style="color:orange"> ***Fine-Tuned DistilBERT*** </span>
+To create sentence embeddings that perform well in the crisis computing context, we decided to fine-tune DistilBert model on our downstream task of tweets classification. The embeddings learnt here 
 
 <br/>
 
