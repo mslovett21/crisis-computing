@@ -38,14 +38,13 @@ To improve classification accuracy on <span style="color:blue"> *informative* </
 
 <span style="color:orange"> ***SupCon Overview*** </span>
 
-For our images, we use contrastive learning paradigm that is well-suited for embedding nuance concepts.
-We aim to learn good representations of the 2 classes so that the downstream classification task becomes easy. Contrastive learning in a nutshell tries to pull clusters of points belonging to the same class close together in the embedding space, while simultaneously pushing apart the clusters of samples from different classes.
+For our images, we use a contrastive learning paradigm that is well-suited for embedding nuanced concepts.
+We aim to learn useful representations of the two classes so that the downstream classification task becomes easy. Contrastive learning, in a nutshell, tries to pull clusters of points belonging to the same class close together in the embedding space, while simultaneously pushing apart the clusters of samples from different classes
 <br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100697168-1651fb00-334a-11eb-9c42-db9e35777c37.png" width="900" height="400">
 </p>
-
-There are many unsupervised methods for this type of problems but we chose to use the Supervised Contrastive Learning algorithm where we leveraged the labelled information due to the nature of our classification task. Once the model is trained, we use it to the created embeddings for a downstream tasks, as well as, for a never-seen subset of the data and check the accuracy of the model through kNN.   <br/>
+There are many unsupervised methods for this type of problem but we chose to use the Supervised Contrastive Learning algorithm where we leveraged the labeled information due to the nature of our classification task. Once the model is trained, we use it to the created embeddings for downstream tasks, as well as, for a never-seen subset of the data, and check the accuracy of the model through kNN.   <br/>
 
 How SupCon works?
   1. Given an input batch of data, we first apply data augmentation twice to obtain two copies of the same batch. Both the copies are forward propagated through the encoder network to obtain a 2048-dimensional normalized embedding. The network learns about these transformations, what it means to come from the same image, how to spread data in embedding space, etc.
@@ -58,19 +57,20 @@ How SupCon works?
 
 <span style="color:orange"> ***Fine-Tuned DistilBERT*** </span>
 <br/>
-To create sentence embeddings that perform well in the crisis computing context, we decided to fine-tune DistilBERT model (from huggingface) on our downstream task of tweets classification. The modele is pretrained on the GloVe Twitter 27 B embeddings. Our tweets are first preprocessed; we remove stop words, URLs,hastags and punctuation. 
+
+To create sentence embeddings that perform well in the crisis computing context, we decided to fine-tune the DistilBERT model (from hugging face library) on our downstream task of tweets classification. The model is pre-trained on the GloVe Twitter 27 B embeddings. First, we preprocess the tweets: we remove stop words, URLs, hashtags, and punctuation. 
 
 <br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100827860-993e8880-3412-11eb-874d-6a5792613737.png" width="900" height="200">
 </p>
 <br/>
-Next, we use DistiBERT tokenizer. We trained the model for 4 epochs with batch size of 16. We use Adam optimizer with weight decay of 0.01 and custom weighted loss function that compensates for the unbalanced dataset.
+Next, we use the DistiBERT tokenizer. We trained the model for 4 epochs with a batch size of 16. We use Adam optimizer with weight decay of 0.01 and a custom weighted loss function that compensates for the unbalanced dataset.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100704075-b06d6f80-3359-11eb-92b8-e39b361a8004.png" width="900" height="500">
 </p>
-We extrace sentence embeddings from the fine-tunes model by avaraging all the final hidden layers of all the tokens in the sentences. The latent space vectors are extracted for the training data, as well as, for test data that the model have not seen before. We use the embeddings during in our early fusion architecture.
+We extract sentence embeddings from the fine-tuned model by averaging all the final hidden layers of all the tokens in the sentences. The latent representations are obtained for the training data and test data that the model has not seen before. We use embeddings during our early fusion architecture.
 
 <br/>
 
@@ -79,8 +79,9 @@ We extrace sentence embeddings from the fine-tunes model by avaraging all the fi
 <br/>
 <span style="color:orange"> ***FixMatch*** </span>
 
-To address the issue of data scarcity, we use semi-supervised learning in the form of consistency regularization and pseudo-labelling.
-Our goal is to provide a label to the unlabeled images in our dataset in order to obtain large-scale annotated dataset for developing effective applications.
+To address the issue of data scarcity, we use semi-supervised learning in the form of consistency regularization and pseudo-labeling.
+Our goal is to provide a label to the unlabeled images in our dataset to obtain a large-scale annotated dataset for developing effective applications.
+
 <br/>
 
 
@@ -102,7 +103,7 @@ FixMatch requires extensive GPU utilization and we aim to obtain higher accuracy
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100710225-43aba280-3364-11eb-97d6-41c1b38078e9.png">
   </p>
-Information from a single source is good but wouldn't it be better to get additional information from multiple sources? Exactly! There are multiple sources of data for a single problem at hand. These sources offer complementary information which not only helps to improve the performance of the model but also enables the model to learn better feature representations by utilizing the strengths of individual modalities.
+Information from a single source is adequate but wouldn't it be better to get additional information from multiple sources? Exactly! There are multiple sources of data for a single problem at hand. These sources offer complementary information that not only helps to improve the performance of the model but also enables the model to learn better feature representations by utilizing the strengths of individual modalities.
 For instance, visual information from images is very sparse, whereas a piece of textual information for the same is more expressive. Combining these two gives us enriched information about the scene at hand. We attempt to employ this intuition by exploring early and late fusion techniques to achieve robust performance.
  <br/>
  <br/> 
@@ -121,22 +122,22 @@ For instance, visual information from images is very sparse, whereas a piece of 
 
 <span style="color:blue"> **MULTIMODAL LEARNING: Late Fusion** </span> 
 <br/>
-To handle the modalities of the dataset, we combine the representations of text and image by performing three late fusion techniques. We combine our best models Bi-LSTM for text and ResNet-50 for images and compare the results with the best baselines from Gautam et al.
+To handle the modalities of the dataset, we combine the representations of text and image by performing three late fusion techniques. We combine our best models: Bi-LSTM for textual data and ResNet-50 for the pictures, and compare the results with the best baselines from Gautam et al.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100700177-b7907f80-3351-11eb-830f-ab8c4930a67e.png" width="600" height="200">
 </p>
 <br/>
-Our improved model was able to beat the baselines with a huge margin in all three fusion techniques viz. Mean Probability Concatenation, Custom Decision Policy and Logistic Regression Decision Policy.
+Our improved model can beat the baselines with a large margin in all three fusion techniques viz. Mean Probability Concatenation, Custom Decision Policy, and Logistic Regression Decision Policy.
 
 - We saw improved performances in all these techniques because of efficient base models i.e. ResNet-50 for image modality and Bi-LSTM for text modality with better accuracies than the baselines.
 
-- In case of Custom Decision Policy, we implemented  2 fully connected layers with ReLU activaton function in the first 128 dim layer and Sigmoid in the last layer. We trained the model for 30 epochs with Adam optimizer and BCE Loss to obtain a 0.08 training-loss.
+- In the case of Custom Decision Policy, we implemented  2 fully connected layers with ReLU activation function in the first 128 dim layer and Sigmoid in the last layer. We trained the model for 30 epochs with Adam optimizer and BCE Loss to obtain a 0.08 training-loss.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100701939-7ef2a500-3355-11eb-8b44-8c30cd272853.png" width="900" height="500">
 </p>
 <br/>
-From the above confusion matrices it is quite evident that our model has a higher AUCROC value since it is able to distinguish between the two classes effectively. The model identifies a large amount of true positives and true negativies thereby making it a robust for the task. The accuracy of these techniques can be further increased with better and deeper base architectures for text and image modalities.
+From the above confusion matrices it is quite evident that our model has a higher AUCROC value since it can distinguish between the two classes effectively. The model identifies a large amount of true positives and true negativies thereby making it a robust for the task. The accuracy of these techniques can be further increased with better and deeper base architectures for text and image modalities.
 <br/>
 <br/>
 
@@ -194,7 +195,7 @@ We visually examine embeddings produced by our models by applying t-sne algorith
 </p>
 <br/>
 <p>
-The above scatter plot depicts one of the best results we have obtained during the training of our Supervised Contrastive model. We can see that the model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. We noticed that this issue arises as a consequence of a large subset of pictures that depict statistical data about the disaster in the form of graphs, pie charts, and more. For example,  we observe that all the images with statistical data in the training set belong to the "informative" class. The images in the CrisisMDD dataset showed a bias towards line graph pictures - most of the images of the line graph belong to the "informative" class. As a result, our model had a lot of false positives when tested on unseen data e.g. random images downloaded from google.com that contain line plot graphs. In our future work, we should modify our model to understand the graph images through text extraction.
+The above scatter plot depicts one of the best results we have obtained during the training of our Supervised Contrastive model. We can see that the model has done a great job at segregating the informative and non-informative images. However, there have been some scenarios where our network fails to classify the images. We noticed that this issue arises as a consequence of a large subset of pictures that depict statistical data about the disaster in the form of graphs, pie charts, and more. For example,  we observe that all the images with statistical data in the training set belong to the "informative" class. The pictures in the CrisisMDD dataset showed a bias towards line graph pictures - most of the images of the line graph belong to the "informative" class. As a result, our model had a lot of false positives when tested on unseen data e.g. random images downloaded from google.com that contain line plot graphs. In our future work, we should modify our model to understand the graph images through text extraction.
 </p>
 
 <br/>
@@ -210,11 +211,10 @@ With the increasingly noticeable impact of global warming on our climate, the di
 Specifically: 
 <br/>
 
-- We look forward to include more features like disaster threat levels, type of emergencies etc to encompass a detailed report of incidents.
-- Apart from text and images we can include different modalities to further improve our existing models.
-- With better and multiple GPUs we can train the contrastive models for more epochs and achieve accuracy as high as 90%, thereby improving the feature representations.
-- We also intend to improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster and develop  a metric to evaluate a quality of such report.
-
+- We aim to include more labels like disaster threat levels, type of emergencies, etc., to encompass a detailed report of incidents.
+- Apart from text and images we plan to include different modalities to further improve our existing models.
+- With access to more computing time ( better/more GPUs), we wish to train the contrastive models for more epochs and achieve an accuracy as high as 90%, thereby improving the feature representations.
+- We also intend to improve label propagation techniques and automatically generate a coherent visual-text summary report about an emergency event/disaster and develop a metric to evaluate the quality of such a report.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/7771314/100708777-c41cd400-3361-11eb-9467-11632f404f54.png">
