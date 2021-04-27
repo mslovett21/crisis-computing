@@ -9,17 +9,23 @@ from PIL import Image
 import os
 # set up GPU
 DEVICE = ("cuda:0" if torch.cuda.is_available() else "cpu")
-MEAN = 0.5,0.5,0.5
-STD = 0.5,0.5,0.5
-BATCH_SIZE = 64
-EPOCHS = 100
+MEAN = 0.4905, 0.4729, 0.4560 
+STD = 0.2503, 0.2425, 0.2452
+BATCH_SIZE = 32
+EPOCHS = 50
 LR = 0.00001
-N_WORKERS = 12
+N_WORKERS = 4
 IMAGE_SIZE = (600, 600)
-PATH_TRAIN = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/data/Training_data'
-PATH_TEST =  '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/data/Testing_data'
+PATH_TRAIN = '/home/shubham/crisis-computing/data/Training_data'
+PATH_TEST =  '/home/shubham/crisis-computing/data/Testing_data'
 CLASSES = {0:"Informative"  , 1:"Non-Informative"}
-FINAL_CKPT = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_final_model.pth'
+CKPT = "/home/shubham/crisis-computing/model_ckpt/"
+FINAL_CKPT = '/home/shubham/crisis-computing/model_ckpt/resnet50_bceloss_final_model.pth'
+
+# PATH_TRAIN = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/data/Training_data'
+# PATH_TEST =  '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/data/Testing_data'
+# CLASSES = {0:"Informative"  , 1:"Non-Informative"}
+# FINAL_CKPT = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_final_model.pth'
 
 # Resnet50 Architecture
 class Resnet(torch.nn.Module):
@@ -36,11 +42,11 @@ class Resnet(torch.nn.Module):
     # Classification head of the model.
     self.head = torch.nn.Sequential(
         torch.nn.Flatten(),
-        torch.nn.Linear(in_features=2048, out_features=2048, bias=True),
+        torch.nn.Linear(in_features=2048, out_features=1024, bias=True),
+        torch.nn.BatchNorm1d(1024),
         torch.nn.ReLU(),
-        torch.nn.Dropout(0.3),
-        torch.nn.BatchNorm1d(2048),
-        torch.nn.Linear(2048, 1, bias=True),
+        torch.nn.Dropout(0.4),
+        torch.nn.Linear(1024, 1, bias=True),
         torch.nn.Sigmoid())
     
 
@@ -57,13 +63,20 @@ def transforms_train():
     params: mean - channel-wise mean of data
             std - channel-wise std of data
     """
-    train_transform = torchvision.transforms.Compose([torchvision.transforms.RandomHorizontalFlip(p=0.6),
-                      torchvision.transforms.RandomAffine(degrees=10,shear=(0.05,0.15)),
-                      torchvision.transforms.Resize(IMAGE_SIZE, interpolation=Image.BILINEAR),
-                      torchvision.transforms.ToTensor(),
-                      torchvision.transforms.Normalize(MEAN, STD)])
+    transfrms = []
+    p = np.random.uniform(0, 1)
+
+    transfrms.append(torchvision.transforms.Resize(IMAGE_SIZE, interpolation=Image.BILINEAR))
+    transfrms.append(torchvision.transforms.RandomHorizontalFlip(p=0.5))
+    if p >= 0.4 and p <=0.6:
+        transfrms.append(torchvision.transforms.ColorJitter(0.2,0.1,0.2))
+    elif p < 0.4:
+        transfrms.append(torchvision.transforms.RandomHorizontalFlip(p=0.5))
+    transfrms.append(torchvision.transforms.ToTensor())  
+    transfrms.append(torchvision.transforms.Normalize(MEAN, STD))
     
-    return train_transform
+    return torchvision.transforms.Compose(transfrms)
+    
 
 def transforms_test():
     """
@@ -77,7 +90,30 @@ def transforms_test():
     return test_transform
 
 
-def get_dataloaders(train_transform, test_transform):
+def find_mean_std(train_set):
+    """
+    returns mean and std of the entire dataset
+    :params: train_set - train data loader
+             test_set - test data loader
+    """
+    mean = 0.
+    var = 0.
+    nb_samples = 0.
+    
+    for data,label in train_set:
+        batch_samples = data.size(0) # Batch size
+        data = data.view(batch_samples, data.size(1), -1)
+        mean += data.mean(2).sum(0)
+        var += data.var(2).sum(0)
+        nb_samples += batch_samples
+   
+    mean /= nb_samples
+    var /= nb_samples
+    std = torch.sqrt(var)
+    
+    return mean, std
+
+def get_dataloaders(train_transform=None, test_transform=None):
     """
     returns train, validation and test dataloafer objects
     params: train_transform - Augmentation for trainset
@@ -86,61 +122,75 @@ def get_dataloaders(train_transform, test_transform):
             n_workers - number of workers
     """
     training = torchvision.datasets.ImageFolder(root=PATH_TRAIN, transform=train_transform)
-    validation = torchvision.datasets.ImageFolder(root=PATH_TRAIN, transform=test_transform)
     testing = torchvision.datasets.ImageFolder(root=PATH_TEST, transform=test_transform)
 
-    # sample part data for validation pupose. Train-val split = 80-20
-    n_train = len(training)
-    indices = list(range(n_train))
-    split = int(np.floor(0.2*n_train))
-    train_idx, val_idx = indices[split:], indices[:split]
+    train_set = torch.utils.data.DataLoader(training, batch_size = BATCH_SIZE, shuffle=True, num_workers=N_WORKERS)
 
-    train_sampler = torch.utils.data.sampler.SubsetRandomSampler(train_idx)
-    valid_sampler = torch.utils.data.sampler.SubsetRandomSampler(val_idx)
+    test_set = torch.utils.data.DataLoader(testing, batch_size = BATCH_SIZE, shuffle=True, num_workers=N_WORKERS)
+
+    return train_set, test_set
 
 
-    train_set = torch.utils.data.DataLoader(training,batch_size = BATCH_SIZE,  sampler=train_sampler, num_workers=N_WORKERS)
-    val_set = torch.utils.data.DataLoader(training, batch_size = BATCH_SIZE, sampler=valid_sampler, num_workers=N_WORKERS)
-    test_set = torch.utils.data.DataLoader(testing, batch_size = BATCH_SIZE, shuffle=False, num_workers=N_WORKERS)
-
-    return train_set, val_set, test_set
-
-def train_loop(model, dataset, flag, criterion, optimizer):
-  """
-  returns loss and accuracy of the model for 1 epoch.
-  params: model -  resnet50
+def train_loop(model, t_dataset, v_dataset, criterion, optimizer):
+    """
+    returns loss and accuracy of the model for 1 epoch.
+    params: model -  resnet50
           dataset - train or val dataset
           flag - "train" for training, "val" for validation
           criterion - loss function
           optimizer - Adam optimizer
-  """
-  total = 0
-  correct = 0
-  epoch_loss = 0
-  for ind, (image, label) in enumerate(dataset):
-      image = image.to(DEVICE)
-      label = label.type(torch.float).to(DEVICE)
+    """
+    total = 0
+    correct = 0
+    epoch_t_loss = 0
+    epoch_v_loss = 0
+    model.train()
+    
+    for ind, (image, label) in enumerate(t_dataset):
+        image = image.to(DEVICE)
+        label = label.type(torch.float).to(DEVICE)
 
-      if flag == "train":
         optimizer.zero_grad()
-      
-      _, output = model(image)
-      
-      loss = criterion(output, label.unsqueeze(1))
-      epoch_loss += loss.item()
-      predicted = torch.round(output).squeeze(-1) 
-      total += label.size(0)
-      correct += (predicted==label).sum().item()
-      
 
-      if flag=="train":
+        _, output = model(image)
+
+        loss = criterion(output, label.unsqueeze(1))
+        epoch_t_loss += loss.item()
+        predicted = torch.round(output).squeeze(-1) 
+        total += label.size(0)
+        correct += (predicted==label).sum().item()
+
         loss.backward()
         optimizer.step()
+      
+    epoch_t_accuracy = 100*correct/total
+    epoch_t_loss = epoch_t_loss/len(t_dataset)
+    
+    total = 0
+    correct = 0
+    
+    model.eval()
+    with torch.no_grad():
+        for ind, (image, label) in enumerate(v_dataset):
+            image = image.to(DEVICE)
+            label = label.type(torch.float).to(DEVICE)
 
-  epoch_accuracy = 100*correct/total
-  epoch_loss = epoch_loss/len(dataset)
-  
-  return epoch_loss, epoch_accuracy
+
+            _, output = model(image)
+
+            loss = criterion(output, label.unsqueeze(1))
+            epoch_v_loss += loss.item()
+            predicted = torch.round(output).squeeze(-1) 
+            total += label.size(0)
+            correct += (predicted==label).sum().item()
+
+
+    epoch_v_accuracy = 100*correct/total
+    epoch_v_loss = epoch_v_loss/len(v_dataset)
+    
+    return epoch_t_loss, epoch_t_accuracy, epoch_v_loss, epoch_v_accuracy
+
+
 
 
 class dataset_loader(Dataset):
@@ -194,47 +244,48 @@ def run_inference(images, labels, flag):
     print("Inference done!")
     return prob, classes
 
-
 def train(train, val, model, optimizer, criterion):
-  """
-  returns train and validation losses of the model over complete training.
-  params: train - train dataset
+    """
+    returns train and validation losses of the model over complete training.
+    params: train - train dataset
           val - validation dataset
           optimizer - optimizer for training
           criterion - loss function
-  """
-  train_losses = []
-  val_losses = []
-  print("Training start...")
-
-  for epoch in range(EPOCHS):
-
-    model = model.train()
-
-    print("Running Epoch {}".format(epoch+1))
+    """
+    train_losses = []
+    train_acc = []
+    val_losses = []
+    val_acc = []
+    print("Training start...")
     
-    epoch_train_loss, train_accuracy = train_loop(model, train, "train", criterion, optimizer)
-    train_losses.append(epoch_train_loss)
+    for epoch in range(EPOCHS):
+
+
+        print("Running Epoch {}".format(epoch+1))
+
+        epoch_train_loss, train_accuracy, epoch_val_loss, val_accuracy = train_loop( model, train, val, criterion, optimizer)
+        train_losses.append(epoch_train_loss)
+        train_acc.append(train_accuracy)
+        val_losses.append(epoch_val_loss)
+        val_acc.append(val_accuracy)
+        
+        if (epoch+1)%5==0:
+            ckpt_path = CKPT+'resnet50_bceloss_epoch_{}.pth'.format(epoch+1)
+            torch.save(model.state_dict(), ckpt_path)
+
+       
   
-    if (epoch+1)%25==0:
-       ckpt_path = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_epoch_{}.pth'.format(epoch+1)
-       torch.save(model.state_dict(), ckpt_path)
+        print("Training loss: {0:.4f}  Train Accuracy: {1:0.2f}".format(epoch_train_loss, train_accuracy))
+        print("Val loss: {0:.4f}  Val Accuracy: {1:0.2f}".format(epoch_val_loss, val_accuracy))
+        print("--------------------------------------------------------")
 
-    model = model.eval()
-    with torch.no_grad():
-      epoch_val_loss, validation_accuracy = train_loop(model, val, "val",criterion, optimizer)
-      val_losses.append(epoch_val_loss)
-  
-    print("Training loss: {0:.4f}  Train Accuracy: {1:0.2f}".format(epoch_train_loss, train_accuracy))
-    print("Validation loss: {0:.4f}  Validation Accuracy: {1:0.2f}".format(epoch_val_loss, validation_accuracy))
-    print("--------------------------------------------------------")
+    print("Training done...")
+    print("Model saved!")
+    final_ckpt = CKPT+'resnet50_bceloss_final_model.pth'
+    torch.save(model.state_dict(), final_ckpt)
 
-  print("Training done...")
-  print("Model saved!")
-  final_ckpt = '/home/visonaries566/supcontrast/SupContrast/crisis/crisis-computing/ResNet50/checkpoints/resnet50_bceloss_final_model.pth'
-  torch.save(model.state_dict(), final_ckpt)
+    return train_losses, train_acc, val_losses, val_acc
 
-  return train_losses, val_losses
 
 def test(model, test):
   """
@@ -296,11 +347,11 @@ if __name__ == "__main__":
     criterion = torch.nn.BCELoss()
 
   train_transform, test_transform = transforms_train(), transforms_test()
-  train_data, val_data, test_data = get_dataloaders(train_transform, test_transform)
+  train_data, test_data = get_dataloaders(train_transform, test_transform)
 
   if opt.flag == 'train':
-    train_loss, val_loss = train(train_data, val_data, model, optimizer, criterion)
-    plot_loss(train_loss, val_loss)
+    train_loss, test_loss = train(train_data, test_data, model, optimizer, criterion)
+    plot_loss(train_loss, test_loss)
 
   if opt.flag == 'test':
     # load specific model for test
