@@ -1,10 +1,14 @@
 from __future__ import print_function
 
 import os
+import pandas as pd
 import sys
-import argparse
+import argparse, torchvision
 import time
-import math
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
 import torch
 import torch.backends.cudnn as cudnn
 from torchvision import transforms, datasets
@@ -17,19 +21,20 @@ from losses import SupConLoss
 
 REL = os.getcwd()
 # the following folder is inside crisis computing directory
-CHECKPOINT = REL + '/SupContrast/model_checkpoints/'
-VIZ = REL + '/SupContrast/model_results/'
-MODE = 'train' # or 'val'
+CHECKPOINT = '/home/shubham/crisis-computing/SupContrast/model_checkpoints/'
+VIZ = '/home/shubham/crisis-computing/SupContrast/model_results/'
+MODE = 'val' # or 'val'
 
 
 
-TRAIN = '../dataset/Training_data/'
-TEST = '../dataset/Testing_data/'
-VAL = '../dataset/Validation_data/'
+TRAIN = '../dataset/Train_data/'
+TEST = '../dataset/Test_data/'
+VAL = '../dataset/Val_data/'
 
 DEVICE = ("cuda:0" if torch.cuda.is_available() else "cpu")
-IMAGE_SIZE = (128,128)
+IMAGE_SIZE = (600, 600)
 
+IMG_WIDTH = 600
 
 
 def parse_option():
@@ -39,7 +44,7 @@ def parse_option():
                         help='print frequency')
     parser.add_argument('--save_freq', type=int, default=10,
                         help='save frequency')
-    parser.add_argument('--batch_size', type=int, default=8,
+    parser.add_argument('--batch_size', type=int, default=32,
                         help='batch_size')
     parser.add_argument('--num_workers', type=int, default=16,
                         help='num of workers to use')
@@ -47,9 +52,9 @@ def parse_option():
                         help='number of training epochs')
 
     # optimization
-    parser.add_argument('--learning_rate', type=float, default=0.005,
+    parser.add_argument('--learning_rate', type=float, default=0.01,
                         help='learning rate')
-    parser.add_argument('--lr_decay_epochs', type=str, default='35,55,75',
+    parser.add_argument('--lr_decay_epochs', type=str, default='25,45,75',
                         help='where to decay lr, can be a list')
     parser.add_argument('--lr_decay_rate', type=float, default=0.1,
                         help='decay rate for learning rate')
@@ -87,36 +92,6 @@ def parse_option():
 
     opt = parser.parse_args()
 
-  
-
-
-    iterations = opt.lr_decay_epochs.split(',')
-    opt.lr_decay_epochs = list([])
-    for it in iterations:
-        opt.lr_decay_epochs.append(int(it))
-
-    opt.model_name = '{}_{}_{}_lr_{}_decay_{}_bsz_{}_temp_{}_trial_{}'.\
-        format(opt.method, opt.dataset, opt.model, opt.learning_rate,
-               opt.weight_decay, opt.batch_size, opt.temp, opt.trial)
-
-    if opt.cosine:
-        opt.model_name = '{}_cosine'.format(opt.model_name)
-
-    # warm-up for large-batch training,
-    if opt.batch_size > 256:
-        opt.warm = True
-    if opt.warm:
-        opt.model_name = '{}_warm'.format(opt.model_name)
-        opt.warmup_from = 0.01
-        opt.warm_epochs = 10
-        if opt.cosine:
-            eta_min = opt.learning_rate * (opt.lr_decay_rate ** 3)
-            opt.warmup_to = eta_min + (opt.learning_rate - eta_min) * (
-                    1 + math.cos(math.pi * opt.warm_epochs / opt.epochs)) / 2
-        else:
-            opt.warmup_to = opt.learning_rate
-
-
     return opt
 
 
@@ -125,7 +100,7 @@ def set_loader(opt):
     # normalize = transforms.Normalize(mean=mean, std=std)
 
     train_transform = transforms.Compose([
-        transforms.RandomResizedCrop(size=224, scale=(0.5, 1.)),
+        transforms.RandomResizedCrop(size=IMG_WIDTH, scale=(0.5, 1.)),
         transforms.RandomHorizontalFlip(),
         transforms.RandomApply([
             transforms.ColorJitter(0.4, 0.4, 0.4, 0.1)
@@ -178,9 +153,6 @@ def train(train_loader, model, criterion, optimizer, epoch, opt):
         labels = labels.to(DEVICE)
         bsz = labels.shape[0]
 
-        # warm-up learning rate
-        warmup_learning_rate(opt, epoch, idx, len(train_loader), optimizer)
-
         # compute loss
         features = model(images)
         f1, f2 = torch.split(features, [bsz, bsz], dim=0)
@@ -194,41 +166,75 @@ def train(train_loader, model, criterion, optimizer, epoch, opt):
 
     return np.average(losses)
 
-def validate(val_loader, model, criterion):
+def validate(val_loader, model):
     
+    features = np.empty(shape=[0, 128])
     val_loss = []
     model.eval()
+    targets = []
     with torch.no_grad():
         
         for idx, (images, labels) in enumerate(val_loader):
-            
-            data_time.update(time.time() - end)
-            images = torch.cat([images[0], images[1]], dim=0)
- 
+      
             images = images.to(DEVICE)
-            labels = labels.to(DEVICE)
             bsz = labels.shape[0]
-
+            targets.extend(labels)
 
             # compute loss
-            features = model(images)
-            f1, f2 = torch.split(features, [bsz, bsz], dim=0)
-            features = torch.cat([f1.unsqueeze(1), f2.unsqueeze(1)], dim=1)
-            loss = criterion(features, labels)
-            val_loss.append(loss.item())
+            feat = model(images)
+            features = np.append(features, feat.cpu().numpy(), axis=0)
+            
+    return features, np.array(targets)
+
         
-    return np.average(val_loss)
-        
-        
-        
+def create_features_df(pred_feat, labels):
+    
+    def create_cols():
+        col = 'col'
+        cols = []
+        for i in range(128):
+            cols.append(col + str(i))
+        return cols
+    
+    cols = create_cols()
+    feature_df = pd.DataFrame(columns=cols)
+    
+    for i,rows in enumerate(pred_feat):
+        a_series = pd.Series(rows, index=feature_df.columns)
+        feature_df = feature_df.append(a_series, ignore_index=True)
+    
+    targets = pd.DataFrame(labels)
+   
+    feature_df['target'] = targets
+
+    
+    return feature_df
+    
+def plot_TSNE_2D(feature_df):
+    
+    tsne = TSNE(n_components=2, random_state=42)
+    tsne_obj = tsne.fit_transform(feature_df)
+    tsne_df = pd.DataFrame({'X': tsne_obj[:, 0],
+                            'Y': tsne_obj[:, 1],
+                            'labels': feature_df['target']})
+    plt.figure(figsize=(20, 20))
+    sns.scatterplot(x="X", y="Y",
+                hue="labels",
+                palette=['orange', 'blue'],
+                legend='full',
+                data=tsne_df)
+
+    plt.savefig(VIZ + 'supcon_embeddings.png')
+    plt.show()
+    plt.close()
+    
+    
 def model_train_mode(model, optimizer, criterion, train_loader, val_loader, opt):
     
     losses = {'train':[], 'val':[]}
     
     # training routine
     for epoch in range(1, opt.epochs + 1):
-        adjust_learning_rate(opt, optimizer, epoch)
-
         # train for one epoch
         time1 = time.time()
         train_loss = train(train_loader, model, criterion, optimizer, epoch, opt)
@@ -253,6 +259,29 @@ def model_train_mode(model, optimizer, criterion, train_loader, val_loader, opt)
 def model_test_mode(model, criterion, test_loader):
     return validate(test_loader, model, criterion)
               
+class Resnet(torch.nn.Module):
+    def __init__(self):
+        super(Resnet,self).__init__()
+        self.resnet = torchvision.models.resnet50(pretrained=True)
+        # Following step gives us all layers except last one.
+        modules = list(self.resnet.children())[:-1]
+        self.resnet = torch.nn.Sequential(*modules)
+        # Freeze the model parameters for transfer learning.
+        for params in self.resnet.parameters():
+            params.requires_grad = False
+
+        self.head = torch.nn.Sequential(
+                torch.nn.Flatten(),
+                torch.nn.Linear(2048, 1024),
+                torch.nn.ReLU(inplace=True),
+                torch.nn.Linear(1024, 128)
+            )
+
+    def forward(self, x):
+        feat = self.resnet(x)
+        feat = torch.nn.functional.normalize(self.head(feat), dim=1)
+        return feat
+
 def main():
     opt = parse_option()
 
@@ -260,17 +289,20 @@ def main():
     train_loader, val_loader, test_loader = set_loader(opt)
 
     # build model and criterion
-    model = SupConResNet(name=opt.model).to(DEVICE)
-    criterion = SupConLoss(temperature=opt.temp).to(DEVICE)
+    model = Resnet().to(DEVICE)
+    criterion = SupConLoss().to(DEVICE)
               
     # build optimizer
     optimizer = set_optimizer(opt, model)
-    
+
     if MODE == "train":
         model, losses = model_train_mode(model, optimizer, criterion, train_loader, val_loader, opt)
     else:
-        loss = model_test_mode(model, criterion, test_loader)
-        print("Test loss: {:.4f}".format(loss))
+        model.load_state_dict(torch.load(CHECKPOINT + 'supcon_final_model.pth'))
+        pred_feat, targets = validate(test_loader, model)
+        feature_df = create_features_df(pred_feat, targets)
+        
+        plot_TSNE_2D(feature_df)
  
 
 if __name__ == '__main__':
